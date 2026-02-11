@@ -1,0 +1,143 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Replace repeated travel images with unique visuals (APT reference)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add distinct travel photography static assets (APT-inspired style) with no repeats across cards/sections.",
+      "acceptanceCriteria": [
+        "All new images are placed as static assets under frontend/public/assets/generated.",
+        "The generated images are visually distinct (different destinations/scenes) and consistent in photographic style inspired by the reference site."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/home-hero-banner.realphoto.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add generated wide travel hero photograph asset (modern aspirational destination scene) in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/home-about-section.realphoto.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated travel agency team/planning scene photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/home-tour-guide-section.realphoto.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated professional tour guide with travelers photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/tour-packages-featured.realphoto.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated tour packages featured banner photograph with iconic landmarks in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/tour-package-1-europe.realphoto.dim_800x600.png",
+          "operation": "create",
+          "description": "Add generated European city landmarks travel photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/tour-package-2-asia.realphoto.dim_800x600.png",
+          "operation": "create",
+          "description": "Add generated East/Southeast Asian street/temple/city travel photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/tour-package-3-tropical.realphoto.dim_800x600.png",
+          "operation": "create",
+          "description": "Add generated tropical beach/island resort travel photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/tour-package-4-safari.realphoto.dim_800x600.png",
+          "operation": "create",
+          "description": "Add generated African safari wildlife landscape travel photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/tour-package-5-south-america.realphoto.dim_800x600.png",
+          "operation": "create",
+          "description": "Add generated South American mountains/ruins travel photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/tour-package-6-australia.realphoto.dim_800x600.png",
+          "operation": "create",
+          "description": "Add generated Australian coast/reef/city travel photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/honeymoon-offer-1.realphoto.dim_800x600.png",
+          "operation": "create",
+          "description": "Add generated romantic honeymoon couple at luxury beach/resort photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/honeymoon-offer-2.realphoto.dim_800x600.png",
+          "operation": "create",
+          "description": "Add generated romantic Paris/city of love evening photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/honeymoon-offer-3.realphoto.dim_800x600.png",
+          "operation": "create",
+          "description": "Add generated Santorini-style white village sunset romantic photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/honeymoon-offer-4.realphoto.dim_800x600.png",
+          "operation": "create",
+          "description": "Add generated Bali-style villa/rice terrace romantic photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/honeymoon-offer-5.realphoto.dim_800x600.png",
+          "operation": "create",
+          "description": "Add generated Swiss Alps chalet/mountain romantic photograph asset in APT-inspired photographic style."
+        },
+        {
+          "path": "frontend/public/assets/generated/honeymoon-offer-6.realphoto.dim_800x600.png",
+          "operation": "create",
+          "description": "Add generated Caribbean island beach/green peaks romantic photograph asset in APT-inspired photographic style."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Update Tour Packages page so each package card uses a unique image from generated assets.",
+      "acceptanceCriteria": [
+        "In frontend/src/pages/TourPackages.tsx, the grid of package cards no longer references a single shared image for every card.",
+        "Each package card renders a unique image file from /assets/generated/.",
+        "The page still builds and routes correctly to booking when clicking “Book Now”."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/TourPackages.tsx",
+          "operation": "modify",
+          "description": "Replace the shared card image (/assets/generated/tour-packages-section-image.realphoto.dim_1200x800.png) with per-package unique images mapped to each package: frontend/public/assets/generated/tour-package-1-europe.realphoto.dim_800x600.png, tour-package-2-asia.realphoto.dim_800x600.png, tour-package-3-tropical.realphoto.dim_800x600.png, tour-package-4-safari.realphoto.dim_800x600.png, tour-package-5-south-america.realphoto.dim_800x600.png, tour-package-6-australia.realphoto.dim_800x600.png. Also update the featured section image to frontend/public/assets/generated/tour-packages-featured.realphoto.dim_1200x800.png while keeping the existing “Book Now” navigation intact."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Update Honeymoon Offers page so each offer card uses its own unique image (no rotation by id).",
+      "acceptanceCriteria": [
+        "In frontend/src/pages/HoneymoonOffers.tsx, offer cards no longer use src={`/assets/generated/honeymoon-offer-${((offer.id - 1) % 3) + 1}.dim_800x600.png`}.",
+        "Each of the 6 honeymoon offer cards uses a different image file from /assets/generated/."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HoneymoonOffers.tsx",
+          "operation": "modify",
+          "description": "Remove the 3-image rotation logic and assign each offer card a dedicated unique image using the new assets: frontend/public/assets/generated/honeymoon-offer-1.realphoto.dim_800x600.png through frontend/public/assets/generated/honeymoon-offer-6.realphoto.dim_800x600.png (one distinct file per offer). Keep existing booking navigation behavior unchanged."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Ensure Home page section images are dedicated and not reused from About or Tour Guide pages.",
+      "acceptanceCriteria": [
+        "In frontend/src/pages/Home.tsx, the About section image is not the same asset used on frontend/src/pages/About.tsx.",
+        "In frontend/src/pages/Home.tsx, the Tour Guide section image is not the same asset used on frontend/src/pages/TourGuide.tsx."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "modify",
+          "description": "Update Home page images to dedicated assets: set hero image to frontend/public/assets/generated/home-hero-banner.realphoto.dim_1600x900.png, set About section image to frontend/public/assets/generated/home-about-section.realphoto.dim_1200x800.png (not the About page’s about-section-image.realphoto.dim_1200x800.png), and set Tour Guide section image to frontend/public/assets/generated/home-tour-guide-section.realphoto.dim_1200x800.png (not the Tour Guide page’s tour-guide-section-image.realphoto.dim_1200x800.png)."
+        }
+      ]
+    }
+  ]
+}

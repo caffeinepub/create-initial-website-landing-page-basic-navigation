@@ -1,0 +1,106 @@
+{
+  "kind": "build_request",
+  "title": "Replace repeated travel images with unique visuals (APT reference)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Generate and add new, distinct travel photography images (no repeats across cards/sections) using https://aptraavelservices.com/ as the visual reference style.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "give the different image for dont use the same image https://aptraavelservices.com/ use this as refference"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All new images are placed as static assets under frontend/public/assets/generated.",
+        "The generated images are visually distinct (different destinations/scenes) and consistent in photographic style inspired by the reference site."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Update the Tour Packages page so each package card uses its own unique image instead of reusing /assets/generated/tour-packages-section-image.realphoto.dim_1200x800.png for every card.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "give the different image for dont use the same image"
+        ]
+      },
+      "acceptanceCriteria": [
+        "In frontend/src/pages/TourPackages.tsx, the grid of package cards no longer references a single shared image for every card.",
+        "Each package card renders a unique image file from /assets/generated/.",
+        "The page still builds and routes correctly to booking when clicking “Book Now”."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Update the Honeymoon Offers page so each offer card uses a unique image (remove the current 3-image rotation pattern based on offer.id).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "dont use the same image"
+        ]
+      },
+      "acceptanceCriteria": [
+        "In frontend/src/pages/HoneymoonOffers.tsx, offer cards no longer use src={`/assets/generated/honeymoon-offer-${((offer.id - 1) % 3) + 1}.dim_800x600.png`}.",
+        "Each of the 6 honeymoon offer cards uses a different image file from /assets/generated/."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Avoid reusing the same section images across multiple pages (e.g., Home vs About, Home vs Tour Guide) by assigning Home page sections their own dedicated images.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "dont use the same image"
+        ]
+      },
+      "acceptanceCriteria": [
+        "In frontend/src/pages/Home.tsx, the About section image is not the same asset used on frontend/src/pages/About.tsx.",
+        "In frontend/src/pages/Home.tsx, the Tour Guide section image is not the same asset used on frontend/src/pages/TourGuide.tsx."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/components/ui (read-only).",
+    "Do not edit immutable paths listed in SYSTEM_CONTEXT (e.g., frontend/src/main.tsx, frontend/src/hooks/useActor.ts, frontend/src/hooks/useInternetIdentity.ts).",
+    "Serve images as static frontend assets (do not route images through the backend)."
+  ],
+  "nonGoals": [
+    "Changing copy/content of the pages beyond what is required to swap image assets.",
+    "Adding new backend endpoints or storing images on the backend."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Wide travel hero photograph: modern aspirational destination scene (home-hero-banner.realphoto.dim_1600x900.png)",
+      "Travel agency team or planning scene photograph (home-about-section.realphoto.dim_1200x800.png)",
+      "Professional tour guide with travelers photograph (home-tour-guide-section.realphoto.dim_1200x800.png)",
+      "Tour packages featured banner photograph with iconic landmarks (tour-packages-featured.realphoto.dim_1200x800.png)",
+      "European city landmarks travel photograph (tour-package-1-europe.realphoto.dim_800x600.png)",
+      "East/Southeast Asian street/temple/city travel photograph (tour-package-2-asia.realphoto.dim_800x600.png)",
+      "Tropical beach/island resort travel photograph (tour-package-3-tropical.realphoto.dim_800x600.png)",
+      "African safari wildlife landscape travel photograph (tour-package-4-safari.realphoto.dim_800x600.png)",
+      "South American mountains/ruins travel photograph (tour-package-5-south-america.realphoto.dim_800x600.png)",
+      "Australian coast/reef/city travel photograph (tour-package-6-australia.realphoto.dim_800x600.png)",
+      "Romantic honeymoon couple at luxury beach/resort photograph (honeymoon-offer-1.realphoto.dim_800x600.png)",
+      "Romantic Paris/city of love evening photograph (honeymoon-offer-2.realphoto.dim_800x600.png)",
+      "Santorini-style white village sunset romantic photograph (honeymoon-offer-3.realphoto.dim_800x600.png)",
+      "Bali-style villa/rice terrace romantic photograph (honeymoon-offer-4.realphoto.dim_800x600.png)",
+      "Swiss Alps chalet/mountain romantic photograph (honeymoon-offer-5.realphoto.dim_800x600.png)",
+      "Caribbean island beach/green peaks romantic photograph (honeymoon-offer-6.realphoto.dim_800x600.png)"
+    ],
+    "edits": []
+  }
+}

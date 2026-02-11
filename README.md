@@ -1,2 +1,3 @@
-# create-initial-website-landing-page-basic-navigation
-Exported from Caffeine project: Replace repeated travel images with unique visuals (APT reference)
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

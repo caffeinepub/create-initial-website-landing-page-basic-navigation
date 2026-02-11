@@ -1,0 +1,116 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-11T16:29:17.730Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Generate and add new, distinct travel photography images (no repeats across cards/sections) using https://aptraavelservices.com/ as the visual reference style.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/home-hero-banner.realphoto.dim_1600x900.png",
+          "frontend/public/assets/generated/home-about-section.realphoto.dim_1200x800.png",
+          "frontend/public/assets/generated/home-tour-guide-section.realphoto.dim_1200x800.png",
+          "frontend/public/assets/generated/tour-packages-featured.realphoto.dim_1200x800.png",
+          "frontend/public/assets/generated/tour-package-1-europe.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/tour-package-2-asia.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/tour-package-3-tropical.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/tour-package-4-safari.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/tour-package-5-south-america.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/tour-package-6-australia.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/honeymoon-offer-1.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/honeymoon-offer-2.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/honeymoon-offer-3.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/honeymoon-offer-4.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/honeymoon-offer-5.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/honeymoon-offer-6.realphoto.dim_800x600.png"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/home-hero-banner.realphoto.dim_1600x900.png",
+          "frontend/public/assets/generated/home-about-section.realphoto.dim_1200x800.png",
+          "frontend/public/assets/generated/home-tour-guide-section.realphoto.dim_1200x800.png",
+          "frontend/public/assets/generated/tour-packages-featured.realphoto.dim_1200x800.png",
+          "frontend/public/assets/generated/tour-package-1-europe.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/tour-package-2-asia.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/tour-package-3-tropical.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/tour-package-4-safari.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/tour-package-5-south-america.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/tour-package-6-australia.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/honeymoon-offer-1.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/honeymoon-offer-2.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/honeymoon-offer-3.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/honeymoon-offer-4.realphoto.dim_800x600.png",
+          "frontend/public/assets/generated/honeymoon-offer-5.realphoto.dim_800x600.png"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Update the Tour Packages page so each package card uses its own unique image instead of reusing /assets/generated/tour-packages-section-image.realphoto.dim_1200x800.png for every card.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/TourPackages.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/TourPackages.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Update the Honeymoon Offers page so each offer card uses a unique image (remove the current 3-image rotation pattern based on offer.id).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/HoneymoonOffers.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/HoneymoonOffers.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Avoid reusing the same section images across multiple pages (e.g., Home vs About, Home vs Tour Guide) by assigning Home page sections their own dedicated images.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Home.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Home.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/public/assets/generated/home-about-section.realphoto.dim_1200x800.png",
+    "frontend/public/assets/generated/home-hero-banner.realphoto.dim_1600x900.png",
+    "frontend/public/assets/generated/home-tour-guide-section.realphoto.dim_1200x800.png",
+    "frontend/public/assets/generated/honeymoon-offer-1.realphoto.dim_800x600.png",
+    "frontend/public/assets/generated/honeymoon-offer-2.realphoto.dim_800x600.png",
+    "frontend/public/assets/generated/honeymoon-offer-3.realphoto.dim_800x600.png",
+    "frontend/public/assets/generated/honeymoon-offer-4.realphoto.dim_800x600.png",
+    "frontend/public/assets/generated/honeymoon-offer-5.realphoto.dim_800x600.png",
+    "frontend/public/assets/generated/tour-package-1-europe.realphoto.dim_800x600.png",
+    "frontend/public/assets/generated/tour-package-2-asia.realphoto.dim_800x600.png",
+    "frontend/public/assets/generated/tour-package-3-tropical.realphoto.dim_800x600.png",
+    "frontend/public/assets/generated/tour-package-4-safari.realphoto.dim_800x600.png",
+    "frontend/public/assets/generated/tour-package-5-south-america.realphoto.dim_800x600.png",
+    "frontend/public/assets/generated/tour-package-6-australia.realphoto.dim_800x600.png",
+    "frontend/public/assets/generated/tour-packages-featured.realphoto.dim_1200x800.png",
+    "frontend/src/pages/Home.tsx",
+    "frontend/src/pages/HoneymoonOffers.tsx",
+    "frontend/src/pages/TourPackages.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

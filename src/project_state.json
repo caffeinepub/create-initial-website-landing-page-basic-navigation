@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "New project",
+  "architectural_notes": [
+    "Use aptraavelservices.com as a visual reference for selecting/placing distinct images per section; avoid reusing the same image repeatedly."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Wide travel hero photograph: modern aspirational destination scene (home-hero-banner.realphoto.dim_1600x900.png)\n- Travel agency team or planning scene photograph (home-about-section.realphoto.dim_1200x800.png)\n- Professional tour guide with travelers photograph (home-tour-guide-section.realphoto.dim_1200x800.png)\n- Tour packages featured banner photograph with iconic landmarks (tour-packages-featured.realphoto.dim_1200x800.png)\n- European city landmarks travel photograph (tour-package-1-europe.realphoto.dim_800x600.png)\n- East/Southeast Asian street/temple/city travel photograph (tour-package-2-asia.realphoto.dim_800x600.png)\n- Tropical beach/island resort travel photograph (tour-package-3-tropical.realphoto.dim_800x600.png)\n- African safari wildlife landscape travel photograph (tour-package-4-safari.realphoto.dim_800x600.png)\n- South American mountains/ruins travel photograph (tour-package-5-south-america.realphoto.dim_800x600.png)\n- Australian coast/reef/city travel photograph (tour-package-6-australia.realphoto.dim_800x600.png)\n- Romantic honeymoon couple at luxury beach/resort photograph (honeymoon-offer-1.realphoto.dim_800x600.png)\n- Romantic Paris/city of love evening photograph (honeymoon-offer-2.realphoto.dim_800x600.png)\n- Santorini-style white village sunset romantic photograph (honeymoon-offer-3.realphoto.dim_800x600.png)\n- Bali-style villa/rice terrace romantic photograph (honeymoon-offer-4.realphoto.dim_800x600.png)\n- Swiss Alps chalet/mountain romantic photograph (honeymoon-offer-5.realphoto.dim_800x600.png)\n- Caribbean island beach/green peaks romantic photograph (honeymoon-offer-6.realphoto.dim_800x600.png)",
+  "existing_features": [
+    {
+      "id": "feature-generate-and-add-new-distinct-travel-photography-images-no-repeats-across-cards-sections-using-https-aptraavelservices-com-as-the-visual-reference-style",
+      "title": "Generate and add new, distinct travel photography images (no repeats across cards/sections) using https://aptraavelservices.com/ as the visual reference style.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-tour-packages-page-so-each-package-card-uses-its-own-unique-image-instead-of-reusing-assets-generated-tour-packages-section-image-realphoto-dim-1200x800-png-for-every-card",
+      "title": "Update the Tour Packages page so each package card uses its own unique image instead of reusing /assets/generated/tour-packages-section-image.realphoto.dim_1200x800.png for every card.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-honeymoon-offers-page-so-each-offer-card-uses-a-unique-image-remove-the-current-3-image-rotation-pattern-based-on-offer-id",
+      "title": "Update the Honeymoon Offers page so each offer card uses a unique image (remove the current 3-image rotation pattern based on offer.id).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-avoid-reusing-the-same-section-images-across-multiple-pages-e-g-home-vs-about-home-vs-tour-guide-by-assigning-home-page-sections-their-own-dedicated-images",
+      "title": "Avoid reusing the same section images across multiple pages (e.g., Home vs About, Home vs Tour Guide) by assigning Home page sections their own dedicated images.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Update site visuals to use varied (non-repeated) images across sections, using aptraavelservices.com as a design/reference baseline",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Replace repeated travel images with unique visuals (APT reference)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
