@@ -11,7 +11,13 @@ import { IDL } from '@icp-sdk/core/candid';
 export const idlService = IDL.Service({
   'getSiteInfo' : IDL.Func(
       [],
-      [IDL.Record({ 'tagline' : IDL.Text, 'name' : IDL.Text })],
+      [
+        IDL.Record({
+          'heroCta' : IDL.Text,
+          'tagline' : IDL.Text,
+          'name' : IDL.Text,
+        }),
+      ],
       ['query'],
     ),
 });
@@ -22,7 +28,13 @@ export const idlFactory = ({ IDL }) => {
   return IDL.Service({
     'getSiteInfo' : IDL.Func(
         [],
-        [IDL.Record({ 'tagline' : IDL.Text, 'name' : IDL.Text })],
+        [
+          IDL.Record({
+            'heroCta' : IDL.Text,
+            'tagline' : IDL.Text,
+            'name' : IDL.Text,
+          }),
+        ],
         ['query'],
       ),
   });

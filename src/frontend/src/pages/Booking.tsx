@@ -53,6 +53,12 @@ export default function Booking() {
     }));
   };
 
+  // Generate WhatsApp link with prefilled message
+  const whatsappMessage = packageName
+    ? `Hi! I'm interested in booking the "${packageName}" package. Can you provide more details?`
+    : `Hi! I'm interested in booking a travel package with Archiv Agency. Can you help me?`;
+  const whatsappLink = `https://wa.me/15551234567?text=${encodeURIComponent(whatsappMessage)}`;
+
   return (
     <div className="container py-12">
       <div className="mx-auto max-w-4xl">
@@ -238,6 +244,7 @@ export default function Booking() {
                     src="/assets/generated/payment-qr.dim_800x800.png"
                     alt="Payment QR Code - Scan to pay using UPI"
                     className="w-full rounded-lg border border-border"
+                    loading="lazy"
                   />
                   <p className="text-xs text-muted-foreground text-center">
                     Scan this QR code with any UPI app to make payment
@@ -249,7 +256,7 @@ export default function Booking() {
             {/* Contact the Owner */}
             <Card>
               <CardHeader>
-                <CardTitle>Contact the Owner</CardTitle>
+                <CardTitle>Contact Us</CardTitle>
                 <CardDescription>
                   Prefer to book directly? Reach out to us
                 </CardDescription>
@@ -259,7 +266,7 @@ export default function Booking() {
                   <Phone className="h-5 w-5 text-primary mt-0.5" />
                   <div>
                     <p className="font-medium text-foreground">Phone</p>
-                    <a href="tel:+15551234567" className="text-sm text-muted-foreground hover:text-primary">
+                    <a href="tel:+15551234567" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                       +1 (555) 123-4567
                     </a>
                   </div>
@@ -267,16 +274,23 @@ export default function Booking() {
                 <Separator />
                 <div className="flex items-start gap-3">
                   <MessageCircle className="h-5 w-5 text-primary mt-0.5" />
-                  <div>
-                    <p className="font-medium text-foreground">WhatsApp</p>
-                    <a
-                      href="https://wa.me/15551234567"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-muted-foreground hover:text-primary"
+                  <div className="flex-1">
+                    <p className="font-medium text-foreground mb-2">WhatsApp</p>
+                    <Button
+                      asChild
+                      variant="outline"
+                      size="sm"
+                      className="w-full"
                     >
-                      +1 (555) 123-4567
-                    </a>
+                      <a
+                        href={whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <MessageCircle className="mr-2 h-4 w-4" />
+                        Chat on WhatsApp
+                      </a>
+                    </Button>
                   </div>
                 </div>
                 <Separator />
@@ -286,7 +300,7 @@ export default function Booking() {
                     <p className="font-medium text-foreground">Email</p>
                     <a
                       href="mailto:bookings@archivagency.com"
-                      className="text-sm text-muted-foreground hover:text-primary"
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
                     >
                       bookings@archivagency.com
                     </a>

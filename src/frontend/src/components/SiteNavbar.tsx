@@ -51,8 +51,8 @@ export default function SiteNavbar() {
             <Link
               key={link.to}
               to={link.to}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              activeProps={{ className: 'text-foreground' }}
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              activeProps={{ className: 'text-primary font-semibold' }}
             >
               {link.label}
             </Link>
@@ -104,8 +104,8 @@ export default function SiteNavbar() {
                   key={link.to}
                   to={link.to}
                   onClick={() => setIsOpen(false)}
-                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                  activeProps={{ className: 'text-foreground' }}
+                  className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                  activeProps={{ className: 'text-primary font-semibold' }}
                 >
                   {link.label}
                 </Link>

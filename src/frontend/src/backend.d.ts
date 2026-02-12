@@ -9,6 +9,7 @@ export interface None {
 export type Option<T> = Some<T> | None;
 export interface backendInterface {
     getSiteInfo(): Promise<{
+        heroCta: string;
         tagline: string;
         name: string;
     }>;

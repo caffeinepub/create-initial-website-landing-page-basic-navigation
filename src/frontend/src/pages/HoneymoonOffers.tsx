@@ -78,18 +78,18 @@ export default function HoneymoonOffers() {
       reviews: 112,
       description: 'Pristine beaches, lush rainforests, and all-inclusive luxury resorts perfect for newlyweds.',
       inclusions: ['All-Inclusive Resort', 'Water Sports', 'Couples Spa', 'Island Tours'],
-      image: '/assets/generated/honeymoon-offer-6.realphoto.dim_800x600.png',
+      image: 'https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=800&h=600&fit=crop',
     },
   ];
 
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-border/40 bg-gradient-to-br from-romantic-muted/40 via-romantic-muted/20 to-background">
+      <section className="relative overflow-hidden border-b border-border/40 bg-gradient-to-br from-primary/10 via-accent/5 to-background">
         <div className="container py-20 md:py-32">
           <div className="mx-auto max-w-3xl text-center">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <Heart className="h-8 w-8 fill-romantic text-romantic" />
+              <Heart className="h-8 w-8 fill-primary text-primary" />
             </div>
             <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
               Honeymoon Offers
@@ -108,12 +108,13 @@ export default function HoneymoonOffers() {
             src="/assets/generated/honeymoon-hero-image.dim_1200x800.png"
             alt="Honeymoon Destinations"
             className="w-full rounded-2xl shadow-lg object-cover max-h-96"
+            loading="lazy"
           />
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="border-b border-border/40 bg-gradient-to-br from-romantic-muted/20 to-background py-16">
+      <section className="border-b border-border/40 bg-muted/30 py-16">
         <div className="container">
           <div className="mb-12 text-center">
             <h2 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
@@ -121,10 +122,10 @@ export default function HoneymoonOffers() {
             </h2>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            <Card className="border-romantic/20 transition-shadow hover:shadow-lg">
+            <Card className="border-border/50 transition-shadow hover:shadow-lg">
               <CardHeader>
-                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-romantic/10">
-                  <Heart className="h-6 w-6 text-romantic" />
+                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                  <Heart className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Romantic Experiences</CardTitle>
                 <CardDescription>
@@ -133,10 +134,10 @@ export default function HoneymoonOffers() {
               </CardHeader>
             </Card>
 
-            <Card className="border-romantic/20 transition-shadow hover:shadow-lg">
+            <Card className="border-border/50 transition-shadow hover:shadow-lg">
               <CardHeader>
-                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-romantic/10">
-                  <Star className="h-6 w-6 text-romantic" />
+                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                  <Star className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Luxury Accommodations</CardTitle>
                 <CardDescription>
@@ -145,10 +146,10 @@ export default function HoneymoonOffers() {
               </CardHeader>
             </Card>
 
-            <Card className="border-romantic/20 transition-shadow hover:shadow-lg">
+            <Card className="border-border/50 transition-shadow hover:shadow-lg">
               <CardHeader>
-                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-romantic/10">
-                  <MapPin className="h-6 w-6 text-romantic" />
+                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+                  <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle>Dream Destinations</CardTitle>
                 <CardDescription>
@@ -173,24 +174,25 @@ export default function HoneymoonOffers() {
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {offers.map((offer) => (
-              <Card key={offer.id} className="border-romantic/20 transition-shadow hover:shadow-lg flex flex-col">
+              <Card key={offer.id} className="border-border/50 transition-shadow hover:shadow-lg flex flex-col">
                 <CardHeader className="p-0">
                   <img
                     src={offer.image}
                     alt={offer.title}
                     className="w-full h-48 object-cover rounded-t-lg"
+                    loading="lazy"
                   />
                 </CardHeader>
                 <CardContent className="pt-6 flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <Heart className="h-4 w-4 fill-romantic text-romantic" />
-                      <Badge className="bg-romantic text-romantic-foreground hover:bg-romantic/90">
+                      <Heart className="h-4 w-4 fill-primary text-primary" />
+                      <Badge className="bg-primary text-primary-foreground hover:bg-primary/90">
                         Honeymoon Special
                       </Badge>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Star className="h-4 w-4 fill-romantic text-romantic" />
+                      <Star className="h-4 w-4 fill-primary text-primary" />
                       <span className="text-sm font-semibold">{offer.rating}</span>
                       <span className="text-xs text-muted-foreground">({offer.reviews})</span>
                     </div>
@@ -220,14 +222,13 @@ export default function HoneymoonOffers() {
                     </div>
                   </div>
 
-                  <div className="mt-auto flex items-center justify-between pt-4 border-t border-romantic/20">
+                  <div className="mt-auto flex items-center justify-between pt-4 border-t border-border/40">
                     <div>
                       <p className="text-xs text-muted-foreground">Starting from</p>
                       <p className="text-2xl font-bold text-foreground">{offer.price}</p>
                     </div>
                     <Button 
-                      className="bg-romantic text-romantic-foreground hover:bg-romantic/90"
-                      onClick={() => navigate({ to: '/booking', search: { package: offer.title } })}
+                      onClick={() => navigate({ to: '/booking', search: { offer: offer.title } })}
                     >
                       Book Now
                     </Button>
@@ -240,26 +241,22 @@ export default function HoneymoonOffers() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-t border-border/40 bg-gradient-to-br from-romantic-muted/30 to-background py-20">
+      <section className="border-t border-border/40 bg-gradient-to-br from-primary/10 to-background py-20">
         <div className="container">
-          <div className="mx-auto max-w-2xl text-center">
-            <Heart className="mx-auto mb-6 h-12 w-12 fill-romantic text-romantic" />
+          <div className="mx-auto max-w-3xl text-center">
+            <Heart className="mx-auto mb-6 h-16 w-16 fill-primary text-primary" />
             <h2 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
               Ready to Start Your Journey Together?
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Let us help you create the perfect honeymoon experience. Contact us today to customize your dream getaway.
+              Let us help you create the perfect honeymoon experience. Contact our travel experts today.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button 
-                size="lg" 
-                className="bg-romantic text-romantic-foreground hover:bg-romantic/90"
-                onClick={() => navigate({ to: '/booking' })}
-              >
-                Plan Your Honeymoon
-              </Button>
-              <Button size="lg" variant="outline" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+              <Button size="lg" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                 Contact Us
+              </Button>
+              <Button size="lg" variant="outline" onClick={() => navigate({ to: '/booking' })}>
+                Book Now
               </Button>
             </div>
           </div>

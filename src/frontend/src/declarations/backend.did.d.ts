@@ -11,7 +11,10 @@ import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
 export interface _SERVICE {
-  'getSiteInfo' : ActorMethod<[], { 'tagline' : string, 'name' : string }>,
+  'getSiteInfo' : ActorMethod<
+    [],
+    { 'heroCta' : string, 'tagline' : string, 'name' : string }
+  >,
 }
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];

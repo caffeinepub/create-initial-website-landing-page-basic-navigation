@@ -2,10 +2,12 @@ actor {
   public query ({ caller }) func getSiteInfo() : async {
     name : Text;
     tagline : Text;
+    heroCta : Text;
   } {
     {
       name = "Archiv Agency";
-      tagline = "Travel the World with Archiv!";
+      tagline = "Your Trusted Partner for Unforgettable Travel Experiences";
+      heroCta = "Explore the World With Archiv Agency";
     };
   };
 };

@@ -1,113 +1,210 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-11T16:29:17.730Z",
+  "generatedAt": "2026-02-11T16:46:38.790Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 4,
-    "implemented": 4,
+    "total": 13,
+    "implemented": 12,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Generate and add new, distinct travel photography images (no repeats across cards/sections) using https://aptraavelservices.com/ as the visual reference style.",
+        "summary": "Ensure the Home page loads as the default first page and that every top-nav route renders without any 'Not Found' or blank-state errors: Home (/), About (/about), Tour Guide (/tour-guide), Services (/services), Tour Packages (/tour-packages), Vehicles (/vehicles), Honeymoon Offers (/honeymoon-offers), Booking (/booking).",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/SiteLayout.tsx"
+        ],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-10",
+        "summary": "Add a contact section that includes a contact form and an embedded Google Map (iframe embed) and ensure it is reachable from the site (e.g., on Home and/or in the footer).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/generated/home-hero-banner.realphoto.dim_1600x900.png",
-          "frontend/public/assets/generated/home-about-section.realphoto.dim_1200x800.png",
-          "frontend/public/assets/generated/home-tour-guide-section.realphoto.dim_1200x800.png",
-          "frontend/public/assets/generated/tour-packages-featured.realphoto.dim_1200x800.png",
-          "frontend/public/assets/generated/tour-package-1-europe.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/tour-package-2-asia.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/tour-package-3-tropical.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/tour-package-4-safari.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/tour-package-5-south-america.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/tour-package-6-australia.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/honeymoon-offer-1.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/honeymoon-offer-2.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/honeymoon-offer-3.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/honeymoon-offer-4.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/honeymoon-offer-5.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/honeymoon-offer-6.realphoto.dim_800x600.png"
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/components/SiteFooter.tsx"
         ],
         "matchedFiles": [
-          "frontend/public/assets/generated/home-hero-banner.realphoto.dim_1600x900.png",
-          "frontend/public/assets/generated/home-about-section.realphoto.dim_1200x800.png",
-          "frontend/public/assets/generated/home-tour-guide-section.realphoto.dim_1200x800.png",
-          "frontend/public/assets/generated/tour-packages-featured.realphoto.dim_1200x800.png",
-          "frontend/public/assets/generated/tour-package-1-europe.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/tour-package-2-asia.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/tour-package-3-tropical.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/tour-package-4-safari.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/tour-package-5-south-america.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/tour-package-6-australia.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/honeymoon-offer-1.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/honeymoon-offer-2.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/honeymoon-offer-3.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/honeymoon-offer-4.realphoto.dim_800x600.png",
-          "frontend/public/assets/generated/honeymoon-offer-5.realphoto.dim_800x600.png"
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/components/SiteFooter.tsx"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Implement smooth scrolling behavior for in-page navigation/CTAs and ensure mobile responsiveness across all pages (navbar, grids, cards, forms).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/components/SiteNavbar.tsx",
+          "frontend/src/pages/Home.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/components/SiteNavbar.tsx",
+          "frontend/src/pages/Home.tsx"
+        ]
+      },
+      {
+        "id": "REQ-12",
+        "summary": "SEO and performance hygiene: update the HTML title and add essential meta tags (description, og:title/og:description) for Archiv Agency; ensure images use appropriate sizing/loading attributes where applicable to keep pages fast.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/index.html",
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/pages/TourPackages.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/index.html",
+          "frontend/src/pages/Home.tsx"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Footer: ensure a professional footer includes social media links (e.g., placeholders to Instagram/Facebook/YouTube/LinkedIn) and that links do not break navigation or cause errors.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/SiteFooter.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/SiteFooter.tsx"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Update the Tour Packages page so each package card uses its own unique image instead of reusing /assets/generated/tour-packages-section-image.realphoto.dim_1200x800.png for every card.",
+        "summary": "Implement the exact required navigation menu labels and order in the top navbar (desktop and mobile): Home, About, Tour Guide, Services, Tour Packages, Vehicles, Honeymoon Offers, Booking.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/TourPackages.tsx"
+          "frontend/src/components/SiteNavbar.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/TourPackages.tsx"
+          "frontend/src/components/SiteNavbar.tsx"
         ]
       },
       {
         "id": "REQ-3",
-        "summary": "Update the Honeymoon Offers page so each offer card uses a unique image (remove the current 3-image rotation pattern based on offer.id).",
+        "summary": "Update site copy to match brand and hero CTA requirements: set backend site info tagline to \"Your Trusted Partner for Unforgettable Travel Experiences\" and update the Home hero to include the CTA text \"Explore the World With Archiv Agency\" (as the primary call-to-action messaging in the hero).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/HoneymoonOffers.tsx"
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/components/SiteNavbar.tsx",
+          "frontend/src/components/SiteFooter.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/HoneymoonOffers.tsx"
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/components/SiteNavbar.tsx",
+          "frontend/src/components/SiteFooter.tsx"
         ]
       },
       {
         "id": "REQ-4",
-        "summary": "Avoid reusing the same section images across multiple pages (e.g., Home vs About, Home vs Tour Guide) by assigning Home page sections their own dedicated images.",
+        "summary": "Ensure every page and major section uses unique, high-quality travel imagery with no repeated images across the site (including cards/grids). Use real-time stock-style images (e.g., Unsplash/Pexels-like URLs) covering: beaches, mountains, cities, adventure tours, honeymoon destinations, and vehicles/transport.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/pages/TourGuide.tsx",
+          "frontend/src/pages/Vehicles.tsx",
+          "frontend/src/pages/Services.tsx",
+          "frontend/src/pages/HoneymoonOffers.tsx",
+          "frontend/src/pages/TourPackages.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Home.tsx",
+          "frontend/src/pages/HoneymoonOffers.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Apply a consistent premium/luxury visual system across all pages (typography, spacing, card styles, and subtle animations) matching a high-end travel brand aesthetic; include smooth section transitions/hover states and keep all sections non-empty.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/pages/About.tsx",
+          "frontend/src/pages/Services.tsx",
+          "frontend/src/pages/Booking.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/pages/Booking.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Implement the theme color feature so that changing the theme color updates the full brand system site-wide: navbar accents, buttons, icons, badges/tags, links and hover effects, and heading highlights. Remove/replace page-specific hardcoded color tokens (e.g., custom 'romantic' color usage) so the theme preset drives the look consistently across all pages.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/HoneymoonOffers.tsx",
+          "frontend/src/components/SiteNavbar.tsx",
+          "frontend/src/components/SiteFooter.tsx",
+          "frontend/src/hooks/useThemeColor.ts",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/HoneymoonOffers.tsx",
+          "frontend/src/components/SiteNavbar.tsx",
+          "frontend/src/components/SiteFooter.tsx",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Home page: implement required sections with premium presentation—hero (with required tagline + CTA), featured destinations section (multiple destination cards with unique images), and an offers banner section (unique imagery and promotional copy).",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/pages/Home.tsx"
         ],
         "matchedFiles": [
           "frontend/src/pages/Home.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Add a testimonials slider/carousel component and surface it on the site (at minimum on the Home page), with multiple testimonials and smooth transitions; ensure it is fully responsive.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/TestimonialsSlider.tsx",
+          "frontend/src/pages/Home.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/TestimonialsSlider.tsx",
+          "frontend/src/pages/Home.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Booking page: keep a simple booking form and add a WhatsApp contact button that opens WhatsApp with a prefilled message including the selected package (when present); show a clear confirmation message after submission.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Booking.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Booking.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
+    "backend/main.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/home-about-section.realphoto.dim_1200x800.png",
-    "frontend/public/assets/generated/home-hero-banner.realphoto.dim_1600x900.png",
-    "frontend/public/assets/generated/home-tour-guide-section.realphoto.dim_1200x800.png",
-    "frontend/public/assets/generated/honeymoon-offer-1.realphoto.dim_800x600.png",
-    "frontend/public/assets/generated/honeymoon-offer-2.realphoto.dim_800x600.png",
-    "frontend/public/assets/generated/honeymoon-offer-3.realphoto.dim_800x600.png",
-    "frontend/public/assets/generated/honeymoon-offer-4.realphoto.dim_800x600.png",
-    "frontend/public/assets/generated/honeymoon-offer-5.realphoto.dim_800x600.png",
-    "frontend/public/assets/generated/tour-package-1-europe.realphoto.dim_800x600.png",
-    "frontend/public/assets/generated/tour-package-2-asia.realphoto.dim_800x600.png",
-    "frontend/public/assets/generated/tour-package-3-tropical.realphoto.dim_800x600.png",
-    "frontend/public/assets/generated/tour-package-4-safari.realphoto.dim_800x600.png",
-    "frontend/public/assets/generated/tour-package-5-south-america.realphoto.dim_800x600.png",
-    "frontend/public/assets/generated/tour-package-6-australia.realphoto.dim_800x600.png",
-    "frontend/public/assets/generated/tour-packages-featured.realphoto.dim_1200x800.png",
+    "frontend/index.html",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/SiteFooter.tsx",
+    "frontend/src/components/SiteNavbar.tsx",
+    "frontend/src/components/TestimonialsSlider.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/index.css",
+    "frontend/src/pages/Booking.tsx",
     "frontend/src/pages/Home.tsx",
     "frontend/src/pages/HoneymoonOffers.tsx",
-    "frontend/src/pages/TourPackages.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

@@ -1,106 +1,263 @@
 {
   "kind": "build_request",
-  "title": "Replace repeated travel images with unique visuals (APT reference)",
+  "title": "Archiv Agency premium travel website: complete routing, unique images, theme-color branding, and required pages/features",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Generate and add new, distinct travel photography images (no repeats across cards/sections) using https://aptraavelservices.com/ as the visual reference style.",
+      "text": "Ensure the Home page loads as the default first page and that every top-nav route renders without any 'Not Found' or blank-state errors: Home (/), About (/about), Tour Guide (/tour-guide), Services (/services), Tour Packages (/tour-packages), Vehicles (/vehicles), Honeymoon Offers (/honeymoon-offers), Booking (/booking).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-4"
         ],
         "quotes": [
-          "give the different image for dont use the same image https://aptraavelservices.com/ use this as refference"
+          "No \"Not Found\" Issue - The Home page must open perfectly as the first page. - All menu links must work properly.",
+          "The top menu bar must include: Home, About, Tour Guide, Services, Tour Packages, Vehicles, Honeymoon Offers, Booking"
         ]
       },
       "acceptanceCriteria": [
-        "All new images are placed as static assets under frontend/public/assets/generated.",
-        "The generated images are visually distinct (different destinations/scenes) and consistent in photographic style inspired by the reference site."
+        "Launching the app opens the Home page (route '/') successfully.",
+        "Clicking each navbar item navigates to its corresponding page and renders content without errors.",
+        "There is no route in the navbar that leads to a missing component, empty page, or console error."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Update the Tour Packages page so each package card uses its own unique image instead of reusing /assets/generated/tour-packages-section-image.realphoto.dim_1200x800.png for every card.",
+      "text": "Implement the exact required navigation menu labels and order in the top navbar (desktop and mobile): Home, About, Tour Guide, Services, Tour Packages, Vehicles, Honeymoon Offers, Booking.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-4"
         ],
         "quotes": [
-          "give the different image for dont use the same image"
+          "Perfect Navigation Menu (Same as Below)\n\nThe top menu bar must include:\n\n- Home\n- About\n- Tour Guide\n- Services\n- Tour Packages\n- Vehicles\n- Honeymoon Offers\n- Booking"
         ]
       },
       "acceptanceCriteria": [
-        "In frontend/src/pages/TourPackages.tsx, the grid of package cards no longer references a single shared image for every card.",
-        "Each package card renders a unique image file from /assets/generated/.",
-        "The page still builds and routes correctly to booking when clicking “Book Now”."
+        "Navbar displays exactly the 8 specified items in the specified order on desktop.",
+        "Mobile menu displays the same 8 items in the same order.",
+        "All 8 items link to the correct routes."
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Update the Honeymoon Offers page so each offer card uses a unique image (remove the current 3-image rotation pattern based on offer.id).",
-      "target": "frontend",
+      "text": "Update site copy to match brand and hero CTA requirements: set backend site info tagline to \"Your Trusted Partner for Unforgettable Travel Experiences\" and update the Home hero to include the CTA text \"Explore the World With Archiv Agency\" (as the primary call-to-action messaging in the hero).",
+      "target": "both",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-4"
         ],
         "quotes": [
-          "dont use the same image"
+          "Hero banner with strong CTA:\n   \"Explore the World With Archiv Agency\"",
+          "Home Page - Hero section with tagline:\n  \"Your Trusted Partner for Unforgettable Travel Experiences\"",
+          "Brand Name: Archiv Agency"
         ]
       },
       "acceptanceCriteria": [
-        "In frontend/src/pages/HoneymoonOffers.tsx, offer cards no longer use src={`/assets/generated/honeymoon-offer-${((offer.id - 1) % 3) + 1}.dim_800x600.png`}.",
-        "Each of the 6 honeymoon offer cards uses a different image file from /assets/generated/."
+        "backend/main.mo getSiteInfo().tagline returns exactly \"Your Trusted Partner for Unforgettable Travel Experiences\".",
+        "Home hero prominently displays \"Explore the World With Archiv Agency\".",
+        "User-facing brand name appears as \"Archiv Agency\" in the navbar/branding."
       ]
     },
     {
       "id": "REQ-4",
-      "text": "Avoid reusing the same section images across multiple pages (e.g., Home vs About, Home vs Tour Guide) by assigning Home page sections their own dedicated images.",
+      "text": "Ensure every page and major section uses unique, high-quality travel imagery with no repeated images across the site (including cards/grids). Use real-time stock-style images (e.g., Unsplash/Pexels-like URLs) covering: beaches, mountains, cities, adventure tours, honeymoon destinations, and vehicles/transport.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-4"
         ],
         "quotes": [
-          "dont use the same image"
+          "Unique Real-Time Images (No Repeated Images)\n- Do NOT use the same image everywhere.\n- Each section must have different high-quality travel images:\n   • Beaches\n   • Mountains\n   • Cities\n   • Adventure Tours\n   • Honeymoon Destinations\n   • Vehicles & Transport\n\nUse real-time unique stock images like Unsplash/Pexels style.\nEvery page must have fresh and different visuals."
         ]
       },
       "acceptanceCriteria": [
-        "In frontend/src/pages/Home.tsx, the About section image is not the same asset used on frontend/src/pages/About.tsx.",
-        "In frontend/src/pages/Home.tsx, the Tour Guide section image is not the same asset used on frontend/src/pages/TourGuide.tsx."
+        "No two sections/cards across the entire site reuse the same image URL/file.",
+        "Home includes distinct images for the hero, featured destinations, and offers banner areas.",
+        "Tour Guide profiles each have distinct photos.",
+        "Tour Packages cards each have distinct images.",
+        "Vehicles cards each have distinct images.",
+        "Honeymoon page uses distinct romantic-destination imagery that is not reused elsewhere."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Apply a consistent premium/luxury visual system across all pages (typography, spacing, card styles, and subtle animations) matching a high-end travel brand aesthetic; include smooth section transitions/hover states and keep all sections non-empty.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Premium Attractive Design\n- Website should look like a top travel brand (MakeMyTrip / TripAdvisor style)\n- Clean layout, modern fonts, smooth animations",
+          "Make the design look like a luxury travel startup website with world-class UI/UX."
+        ]
+      },
+      "acceptanceCriteria": [
+        "All 8 pages have complete, non-placeholder content and cohesive layout.",
+        "Buttons/cards/sections have consistent spacing and visual hierarchy across pages.",
+        "Animations are subtle (e.g., hover elevation, fade/slide-in) and do not break layout on mobile."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Implement the theme color feature so that changing the theme color updates the full brand system site-wide: navbar accents, buttons, icons, badges/tags, links and hover effects, and heading highlights. Remove/replace page-specific hardcoded color tokens (e.g., custom 'romantic' color usage) so the theme preset drives the look consistently across all pages.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Theme Color Feature (Full Branding)\n- When the user selects a theme color, EVERYTHING must update automatically:\n   • Navbar\n   • Buttons\n   • Icons\n   • Tags\n   • Links & Hover effects\n   • Headings highlights\n- Theme color must apply consistently across the entire website."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Switching theme presets changes the visual color of primary buttons, badges, icon accents, link hover states, and highlighted headings across every page.",
+        "No page uses a standalone color system that ignores the selected theme preset (e.g., no isolated page-only palette that remains unchanged).",
+        "Theme color selection persists across reload (localStorage behavior remains functional)."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Home page: implement required sections with premium presentation—hero (with required tagline + CTA), featured destinations section (multiple destination cards with unique images), and an offers banner section (unique imagery and promotional copy).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Home Page\n- Hero section with tagline:\n  \"Your Trusted Partner for Unforgettable Travel Experiences\"\n- Featured destinations with unique images\n- Offers banner"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Home includes a featured destinations section with multiple cards and unique images.",
+        "Home includes a distinct offers banner section with its own unique image.",
+        "Hero contains the required tagline and the CTA text is clearly visible."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Add a testimonials slider/carousel component and surface it on the site (at minimum on the Home page), with multiple testimonials and smooth transitions; ensure it is fully responsive.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "EXTRA FEATURES (Must Include)\n\n- Testimonials slider"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A testimonials slider is visible and rotates between at least 3 testimonials.",
+        "User can navigate testimonials (e.g., next/prev or dots) on desktop and mobile.",
+        "Slider does not cause layout shift or overflow on small screens."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Booking page: keep a simple booking form and add a WhatsApp contact button that opens WhatsApp with a prefilled message including the selected package (when present); show a clear confirmation message after submission.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Booking Page\n- Simple booking form\n- WhatsApp contact button\n- Confirmation message"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Booking page contains a WhatsApp button that opens a wa.me (or WhatsApp) link in a new tab.",
+        "The WhatsApp prefilled message includes the package name when the booking page is opened with a package selected.",
+        "Submitting the booking form shows a confirmation message and does not throw errors."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Add a contact section that includes a contact form and an embedded Google Map (iframe embed) and ensure it is reachable from the site (e.g., on Home and/or in the footer).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Contact form + Google map"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A contact form is present with basic fields and a submit interaction (client-side).",
+        "A Google Map embed is displayed via iframe and is responsive (no horizontal overflow).",
+        "Contact section is accessible via scrolling/navigation without broken anchors."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Implement smooth scrolling behavior for in-page navigation/CTAs and ensure mobile responsiveness across all pages (navbar, grids, cards, forms).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "- Smooth scrolling\n- Mobile responsive design"
+        ]
+      },
+      "acceptanceCriteria": [
+        "In-page CTA links that scroll to sections do so smoothly.",
+        "All pages render correctly on mobile widths without overlapping elements or clipped content.",
+        "Mobile menu opens/closes reliably and routes correctly."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "SEO and performance hygiene: update the HTML title and add essential meta tags (description, og:title/og:description) for Archiv Agency; ensure images use appropriate sizing/loading attributes where applicable to keep pages fast.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Fast loading, SEO friendly"
+        ]
+      },
+      "acceptanceCriteria": [
+        "frontend/index.html title references \"Archiv Agency\" (not the template title).",
+        "Meta description is present and relevant to Archiv Agency travel services.",
+        "Pages avoid obviously oversized images for small containers and do not spam the console with errors/warnings."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Footer: ensure a professional footer includes social media links (e.g., placeholders to Instagram/Facebook/YouTube/LinkedIn) and that links do not break navigation or cause errors.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Professional footer with social media links"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Footer displays a social links area with at least 3 social icons/links.",
+        "Social links open externally (new tab) and do not break SPA routing.",
+        "All internal footer links that are shown navigate to valid routes."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/components/ui (read-only).",
-    "Do not edit immutable paths listed in SYSTEM_CONTEXT (e.g., frontend/src/main.tsx, frontend/src/hooks/useActor.ts, frontend/src/hooks/useInternetIdentity.ts).",
-    "Serve images as static frontend assets (do not route images through the backend)."
+    "Do not modify files under frontend/src/components/ui (compose existing UI components instead).",
+    "Do not edit immutable paths listed by the system (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
+    "Backend must remain a single Motoko actor in backend/main.mo; only introduce backend/migration.mo if an existing stable state requires migration."
   ],
   "nonGoals": [
-    "Changing copy/content of the pages beyond what is required to swap image assets.",
-    "Adding new backend endpoints or storing images on the backend."
+    "Implementing payments or deposits for bookings.",
+    "Persisting bookings in a database or adding admin dashboards.",
+    "Adding third-party authentication providers (only Internet Identity is supported).",
+    "Real-time chat or WebSocket-based features."
   ],
   "imageRequirements": {
-    "required": [
-      "Wide travel hero photograph: modern aspirational destination scene (home-hero-banner.realphoto.dim_1600x900.png)",
-      "Travel agency team or planning scene photograph (home-about-section.realphoto.dim_1200x800.png)",
-      "Professional tour guide with travelers photograph (home-tour-guide-section.realphoto.dim_1200x800.png)",
-      "Tour packages featured banner photograph with iconic landmarks (tour-packages-featured.realphoto.dim_1200x800.png)",
-      "European city landmarks travel photograph (tour-package-1-europe.realphoto.dim_800x600.png)",
-      "East/Southeast Asian street/temple/city travel photograph (tour-package-2-asia.realphoto.dim_800x600.png)",
-      "Tropical beach/island resort travel photograph (tour-package-3-tropical.realphoto.dim_800x600.png)",
-      "African safari wildlife landscape travel photograph (tour-package-4-safari.realphoto.dim_800x600.png)",
-      "South American mountains/ruins travel photograph (tour-package-5-south-america.realphoto.dim_800x600.png)",
-      "Australian coast/reef/city travel photograph (tour-package-6-australia.realphoto.dim_800x600.png)",
-      "Romantic honeymoon couple at luxury beach/resort photograph (honeymoon-offer-1.realphoto.dim_800x600.png)",
-      "Romantic Paris/city of love evening photograph (honeymoon-offer-2.realphoto.dim_800x600.png)",
-      "Santorini-style white village sunset romantic photograph (honeymoon-offer-3.realphoto.dim_800x600.png)",
-      "Bali-style villa/rice terrace romantic photograph (honeymoon-offer-4.realphoto.dim_800x600.png)",
-      "Swiss Alps chalet/mountain romantic photograph (honeymoon-offer-5.realphoto.dim_800x600.png)",
-      "Caribbean island beach/green peaks romantic photograph (honeymoon-offer-6.realphoto.dim_800x600.png)"
-    ],
+    "required": [],
     "edits": []
   }
 }

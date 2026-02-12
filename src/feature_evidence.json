@@ -2,26 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-generate-and-add-new-distinct-travel-photography-images-no-repeats-across-cards-sections-using-https-aptraavelservices-com-as-the-visual-reference-style",
-      "featureTitle": "Generate and add new, distinct travel photography images (no repeats across cards/sections) using https://aptraavelservices.com/ as the visual reference style.",
-      "files": [],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-tour-packages-page-so-each-package-card-uses-its-own-unique-image-instead-of-reusing-assets-generated-tour-packages-section-image-realphoto-dim-1200x800-png-for-every-card",
-      "featureTitle": "Update the Tour Packages page so each package card uses its own unique image instead of reusing /assets/generated/tour-packages-section-image.realphoto.dim_1200x800.png for every card.",
+      "featureId": "feature-implement-the-exact-required-navigation-menu-labels-and-order-in-the-top-navbar-desktop-and-mobile-home-about-tour-guide-services-tour-packages-vehicles-honeymoon-offers-booking",
+      "featureTitle": "Implement the exact required navigation menu labels and order in the top navbar (desktop and mobile): Home, About, Tour Guide, Services, Tour Packages, Vehicles, Honeymoon Offers, Booking.",
       "files": [
-        "frontend/src/pages/TourPackages.tsx"
+        "frontend/src/components/SiteNavbar.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -36,10 +20,12 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-the-honeymoon-offers-page-so-each-offer-card-uses-a-unique-image-remove-the-current-3-image-rotation-pattern-based-on-offer-id",
-      "featureTitle": "Update the Honeymoon Offers page so each offer card uses a unique image (remove the current 3-image rotation pattern based on offer.id).",
+      "featureId": "feature-update-site-copy-to-match-brand-and-hero-cta-requirements-set-backend-site-info-tagline-to-your-trusted-partner-for-unforgettable-travel-experiences-and-update-the-home-hero-to-include-the-cta-text-explore-the-world-with-archiv-agency-as-the-primary-call-to-action-messaging-in-the-hero",
+      "featureTitle": "Update site copy to match brand and hero CTA requirements: set backend site info tagline to \"Your Trusted Partner for Unforgettable Travel Experiences\" and update the Home hero to include the CTA text \"Explore the World With Archiv Agency\" (as the primary call-to-action messaging in the hero).",
       "files": [
-        "frontend/src/pages/HoneymoonOffers.tsx"
+        "frontend/src/components/SiteFooter.tsx",
+        "frontend/src/components/SiteNavbar.tsx",
+        "frontend/src/pages/Home.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -54,8 +40,67 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-avoid-reusing-the-same-section-images-across-multiple-pages-e-g-home-vs-about-home-vs-tour-guide-by-assigning-home-page-sections-their-own-dedicated-images",
-      "featureTitle": "Avoid reusing the same section images across multiple pages (e.g., Home vs About, Home vs Tour Guide) by assigning Home page sections their own dedicated images.",
+      "featureId": "feature-ensure-every-page-and-major-section-uses-unique-high-quality-travel-imagery-with-no-repeated-images-across-the-site-including-cards-grids-use-real-time-stock-style-images-e-g-unsplash-pexels-like-urls-covering-beaches-mountains-cities-adventure-tours-honeymoon-destinations-and-vehicles-transport",
+      "featureTitle": "Ensure every page and major section uses unique, high-quality travel imagery with no repeated images across the site (including cards/grids). Use real-time stock-style images (e.g., Unsplash/Pexels-like URLs) covering: beaches, mountains, cities, adventure tours, honeymoon destinations, and vehicles/transport.",
+      "files": [
+        "frontend/src/pages/Home.tsx",
+        "frontend/src/pages/HoneymoonOffers.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-consistent-premium-luxury-visual-system-across-all-pages-typography-spacing-card-styles-and-subtle-animations-matching-a-high-end-travel-brand-aesthetic-include-smooth-section-transitions-hover-states-and-keep-all-sections-non-empty",
+      "featureTitle": "Apply a consistent premium/luxury visual system across all pages (typography, spacing, card styles, and subtle animations) matching a high-end travel brand aesthetic; include smooth section transitions/hover states and keep all sections non-empty.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/src/pages/Booking.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-theme-color-feature-so-that-changing-the-theme-color-updates-the-full-brand-system-site-wide-navbar-accents-buttons-icons-badges-tags-links-and-hover-effects-and-heading-highlights-remove-replace-page-specific-hardcoded-color-tokens-e-g-custom-romantic-color-usage-so-the-theme-preset-drives-the-look-consistently-across-all-pages",
+      "featureTitle": "Implement the theme color feature so that changing the theme color updates the full brand system site-wide: navbar accents, buttons, icons, badges/tags, links and hover effects, and heading highlights. Remove/replace page-specific hardcoded color tokens (e.g., custom 'romantic' color usage) so the theme preset drives the look consistently across all pages.",
+      "files": [
+        "frontend/src/components/SiteFooter.tsx",
+        "frontend/src/components/SiteNavbar.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/HoneymoonOffers.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-home-page-implement-required-sections-with-premium-presentation-hero-with-required-tagline-cta-featured-destinations-section-multiple-destination-cards-with-unique-images-and-an-offers-banner-section-unique-imagery-and-promotional-copy",
+      "featureTitle": "Home page: implement required sections with premium presentation—hero (with required tagline + CTA), featured destinations section (multiple destination cards with unique images), and an offers banner section (unique imagery and promotional copy).",
       "files": [
         "frontend/src/pages/Home.tsx"
       ],
@@ -67,7 +112,120 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-4"
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-testimonials-slider-carousel-component-and-surface-it-on-the-site-at-minimum-on-the-home-page-with-multiple-testimonials-and-smooth-transitions-ensure-it-is-fully-responsive",
+      "featureTitle": "Add a testimonials slider/carousel component and surface it on the site (at minimum on the Home page), with multiple testimonials and smooth transitions; ensure it is fully responsive.",
+      "files": [
+        "frontend/src/components/TestimonialsSlider.tsx",
+        "frontend/src/pages/Home.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-booking-page-keep-a-simple-booking-form-and-add-a-whatsapp-contact-button-that-opens-whatsapp-with-a-prefilled-message-including-the-selected-package-when-present-show-a-clear-confirmation-message-after-submission",
+      "featureTitle": "Booking page: keep a simple booking form and add a WhatsApp contact button that opens WhatsApp with a prefilled message including the selected package (when present); show a clear confirmation message after submission.",
+      "files": [
+        "frontend/src/pages/Booking.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-contact-section-that-includes-a-contact-form-and-an-embedded-google-map-iframe-embed-and-ensure-it-is-reachable-from-the-site-e-g-on-home-and-or-in-the-footer",
+      "featureTitle": "Add a contact section that includes a contact form and an embedded Google Map (iframe embed) and ensure it is reachable from the site (e.g., on Home and/or in the footer).",
+      "files": [
+        "frontend/src/components/SiteFooter.tsx",
+        "frontend/src/pages/Home.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-smooth-scrolling-behavior-for-in-page-navigation-ctas-and-ensure-mobile-responsiveness-across-all-pages-navbar-grids-cards-forms",
+      "featureTitle": "Implement smooth scrolling behavior for in-page navigation/CTAs and ensure mobile responsiveness across all pages (navbar, grids, cards, forms).",
+      "files": [
+        "frontend/src/components/SiteNavbar.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/Home.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-seo-and-performance-hygiene-update-the-html-title-and-add-essential-meta-tags-description-og-title-og-description-for-archiv-agency-ensure-images-use-appropriate-sizing-loading-attributes-where-applicable-to-keep-pages-fast",
+      "featureTitle": "SEO and performance hygiene: update the HTML title and add essential meta tags (description, og:title/og:description) for Archiv Agency; ensure images use appropriate sizing/loading attributes where applicable to keep pages fast.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/pages/Home.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-12"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-footer-ensure-a-professional-footer-includes-social-media-links-e-g-placeholders-to-instagram-facebook-youtube-linkedin-and-that-links-do-not-break-navigation-or-cause-errors",
+      "featureTitle": "Footer: ensure a professional footer includes social media links (e.g., placeholders to Instagram/Facebook/YouTube/LinkedIn) and that links do not break navigation or cause errors.",
+      "files": [
+        "frontend/src/components/SiteFooter.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-13"
       ],
       "confidence": "high"
     }
