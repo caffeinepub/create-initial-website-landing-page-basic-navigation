@@ -11,7 +11,7 @@ export function useSiteInfo() {
         // Return fallback immediately if actor is not available
         return {
           name: 'Archiv Agency',
-          tagline: 'Travel the World with Archiv!',
+          tagline: 'Your Trusted Partner for Unforgettable Travel Experiences',
         };
       }
       return actor.getSiteInfo();
@@ -21,14 +21,14 @@ export function useSiteInfo() {
     // Return fallback data immediately while loading
     placeholderData: {
       name: 'Archiv Agency',
-      tagline: 'Travel the World with Archiv!',
+      tagline: 'Your Trusted Partner for Unforgettable Travel Experiences',
     },
   });
 
   return {
     siteInfo: data || {
       name: 'Archiv Agency',
-      tagline: 'Travel the World with Archiv!',
+      tagline: 'Your Trusted Partner for Unforgettable Travel Experiences',
     },
     isLoading: isLoading && isFetching,
     error,

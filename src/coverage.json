@@ -1,210 +1,69 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-11T16:46:38.790Z",
+  "generatedAt": "2026-02-13T07:10:11.523Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 13,
-    "implemented": 12,
+    "total": 4,
+    "implemented": 3,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Ensure the Home page loads as the default first page and that every top-nav route renders without any 'Not Found' or blank-state errors: Home (/), About (/about), Tour Guide (/tour-guide), Services (/services), Tour Packages (/tour-packages), Vehicles (/vehicles), Honeymoon Offers (/honeymoon-offers), Booking (/booking).",
-        "status": "missing",
-        "plannedFiles": [
-          "frontend/src/App.tsx",
-          "frontend/src/components/SiteLayout.tsx"
-        ],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-10",
-        "summary": "Add a contact section that includes a contact form and an embedded Google Map (iframe embed) and ensure it is reachable from the site (e.g., on Home and/or in the footer).",
+        "summary": "Add the missing Internet Computer project configuration so the app can be deployed with DFX: create a root-level `dfx.json` that defines a Motoko `backend` canister (source `backend/main.mo`) and a static asset `frontend` canister that serves the built Vite output from `frontend/dist`.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/Home.tsx",
-          "frontend/src/components/SiteFooter.tsx"
+          "frontend/vite.config.ts",
+          "frontend/DEPLOYMENT.md"
         ],
         "matchedFiles": [
-          "frontend/src/pages/Home.tsx",
-          "frontend/src/components/SiteFooter.tsx"
-        ]
-      },
-      {
-        "id": "REQ-11",
-        "summary": "Implement smooth scrolling behavior for in-page navigation/CTAs and ensure mobile responsiveness across all pages (navbar, grids, cards, forms).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/SiteNavbar.tsx",
-          "frontend/src/pages/Home.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/SiteNavbar.tsx",
-          "frontend/src/pages/Home.tsx"
-        ]
-      },
-      {
-        "id": "REQ-12",
-        "summary": "SEO and performance hygiene: update the HTML title and add essential meta tags (description, og:title/og:description) for Archiv Agency; ensure images use appropriate sizing/loading attributes where applicable to keep pages fast.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/index.html",
-          "frontend/src/pages/Home.tsx",
-          "frontend/src/pages/TourPackages.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/index.html",
-          "frontend/src/pages/Home.tsx"
-        ]
-      },
-      {
-        "id": "REQ-13",
-        "summary": "Footer: ensure a professional footer includes social media links (e.g., placeholders to Instagram/Facebook/YouTube/LinkedIn) and that links do not break navigation or cause errors.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/SiteFooter.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/SiteFooter.tsx"
+          "frontend/vite.config.ts",
+          "frontend/DEPLOYMENT.md"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Implement the exact required navigation menu labels and order in the top navbar (desktop and mobile): Home, About, Tour Guide, Services, Tour Packages, Vehicles, Honeymoon Offers, Booking.",
-        "status": "implemented",
+        "summary": "Add a complete `frontend/package.json` with standard Vite + React scripts and dependencies required by the existing codebase (React, Vite, Tailwind, TanStack Router, TanStack React Query, next-themes, etc.) so `npm install` and `npm run build` succeed in `frontend/`.",
+        "status": "missing",
         "plannedFiles": [
-          "frontend/src/components/SiteNavbar.tsx"
+          "frontend/package.json"
         ],
-        "matchedFiles": [
-          "frontend/src/components/SiteNavbar.tsx"
-        ]
+        "matchedFiles": []
       },
       {
         "id": "REQ-3",
-        "summary": "Update site copy to match brand and hero CTA requirements: set backend site info tagline to \"Your Trusted Partner for Unforgettable Travel Experiences\" and update the Home hero to include the CTA text \"Explore the World With Archiv Agency\" (as the primary call-to-action messaging in the hero).",
+        "summary": "Ensure the frontend canister deployment uses the Vite build output and that DFX build/install steps work for the frontend canister (including any needed build steps to run `npm run build` before packaging assets).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/Home.tsx",
-          "frontend/src/components/SiteNavbar.tsx",
-          "frontend/src/components/SiteFooter.tsx"
+          "frontend/package.json",
+          "frontend/DEPLOYMENT.md"
         ],
         "matchedFiles": [
-          "frontend/src/pages/Home.tsx",
-          "frontend/src/components/SiteNavbar.tsx",
-          "frontend/src/components/SiteFooter.tsx"
+          "frontend/DEPLOYMENT.md"
         ]
       },
       {
         "id": "REQ-4",
-        "summary": "Ensure every page and major section uses unique, high-quality travel imagery with no repeated images across the site (including cards/grids). Use real-time stock-style images (e.g., Unsplash/Pexels-like URLs) covering: beaches, mountains, cities, adventure tours, honeymoon destinations, and vehicles/transport.",
+        "summary": "Update `frontend/DEPLOYMENT.md` to be complete (it currently ends mid-section) and provide an end-to-end, copy/paste deployment flow that matches the repo’s actual files (including the new `dfx.json` and `frontend/package.json`) for both local testing and IC mainnet deployment.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/Home.tsx",
-          "frontend/src/pages/TourGuide.tsx",
-          "frontend/src/pages/Vehicles.tsx",
-          "frontend/src/pages/Services.tsx",
-          "frontend/src/pages/HoneymoonOffers.tsx",
-          "frontend/src/pages/TourPackages.tsx"
+          "frontend/DEPLOYMENT.md"
         ],
         "matchedFiles": [
-          "frontend/src/pages/Home.tsx",
-          "frontend/src/pages/HoneymoonOffers.tsx"
-        ]
-      },
-      {
-        "id": "REQ-5",
-        "summary": "Apply a consistent premium/luxury visual system across all pages (typography, spacing, card styles, and subtle animations) matching a high-end travel brand aesthetic; include smooth section transitions/hover states and keep all sections non-empty.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
-          "frontend/src/pages/About.tsx",
-          "frontend/src/pages/Services.tsx",
-          "frontend/src/pages/Booking.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/pages/Booking.tsx"
-        ]
-      },
-      {
-        "id": "REQ-6",
-        "summary": "Implement the theme color feature so that changing the theme color updates the full brand system site-wide: navbar accents, buttons, icons, badges/tags, links and hover effects, and heading highlights. Remove/replace page-specific hardcoded color tokens (e.g., custom 'romantic' color usage) so the theme preset drives the look consistently across all pages.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/HoneymoonOffers.tsx",
-          "frontend/src/components/SiteNavbar.tsx",
-          "frontend/src/components/SiteFooter.tsx",
-          "frontend/src/hooks/useThemeColor.ts",
-          "frontend/src/index.css"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/HoneymoonOffers.tsx",
-          "frontend/src/components/SiteNavbar.tsx",
-          "frontend/src/components/SiteFooter.tsx",
-          "frontend/src/index.css"
-        ]
-      },
-      {
-        "id": "REQ-7",
-        "summary": "Home page: implement required sections with premium presentation—hero (with required tagline + CTA), featured destinations section (multiple destination cards with unique images), and an offers banner section (unique imagery and promotional copy).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/Home.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/Home.tsx"
-        ]
-      },
-      {
-        "id": "REQ-8",
-        "summary": "Add a testimonials slider/carousel component and surface it on the site (at minimum on the Home page), with multiple testimonials and smooth transitions; ensure it is fully responsive.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/TestimonialsSlider.tsx",
-          "frontend/src/pages/Home.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/TestimonialsSlider.tsx",
-          "frontend/src/pages/Home.tsx"
-        ]
-      },
-      {
-        "id": "REQ-9",
-        "summary": "Booking page: keep a simple booking form and add a WhatsApp contact button that opens WhatsApp with a prefilled message including the selected package (when present); show a clear confirmation message after submission.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/Booking.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/Booking.tsx"
+          "frontend/DEPLOYMENT.md"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/index.html",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
-    "frontend/src/components/SiteFooter.tsx",
-    "frontend/src/components/SiteNavbar.tsx",
-    "frontend/src/components/TestimonialsSlider.tsx",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/index.css",
-    "frontend/src/pages/Booking.tsx",
-    "frontend/src/pages/Home.tsx",
-    "frontend/src/pages/HoneymoonOffers.tsx",
+    "frontend/DEPLOYMENT.md",
+    "frontend/vite.config.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

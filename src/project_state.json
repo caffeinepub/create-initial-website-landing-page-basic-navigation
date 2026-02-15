@@ -1,202 +1,49 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Build a modern, premium, luxury-style travel agency marketing website for \"Archiv Agency\" with fully working navigation (no broken routes), unique high-quality stock images per section/page, global theme-color branding, and key pages: Home, About, Tour Guide, Services, Tour Packages, Vehicles, Honeymoon Offers, Booking.",
-  "architectural_notes": [
-    "Ensure all routes exist and the Home page is the default entry route; no empty sections or broken links.",
-    "Use a centralized theme system (e.g., CSS variables/design tokens) so one selected brand color updates all UI elements site-wide.",
-    "Enforce a no-repeat image policy by tracking/assigning distinct stock image URLs per section/page."
+  "summary": "New project",
+  "architectural_notes": [],
+  "known_issues": [
+    "Deployment is failing (deployment error occurred during build/deploy sequence)."
   ],
-  "known_issues": [],
-  "isFixRequest": false,
+  "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-implement-the-exact-required-navigation-menu-labels-and-order-in-the-top-navbar-desktop-and-mobile-home-about-tour-guide-services-tour-packages-vehicles-honeymoon-offers-booking",
-      "title": "Implement the exact required navigation menu labels and order in the top navbar (desktop and mobile): Home, About, Tour Guide, Services, Tour Packages, Vehicles, Honeymoon Offers, Booking.",
+      "id": "feature-add-the-missing-internet-computer-project-configuration-so-the-app-can-be-deployed-with-dfx-create-a-root-level-dfx-json-that-defines-a-motoko-backend-canister-source-backend-main-mo-and-a-static-asset-frontend-canister-that-serves-the-built-vite-output-from-frontend-dist",
+      "title": "Add the missing Internet Computer project configuration so the app can be deployed with DFX: create a root-level `dfx.json` that defines a Motoko `backend` canister (source `backend/main.mo`) and a static asset `frontend` canister that serves the built Vite output from `frontend/dist`.",
       "reqIds": [
-        "REQ-2"
+        "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-site-copy-to-match-brand-and-hero-cta-requirements-set-backend-site-info-tagline-to-your-trusted-partner-for-unforgettable-travel-experiences-and-update-the-home-hero-to-include-the-cta-text-explore-the-world-with-archiv-agency-as-the-primary-call-to-action-messaging-in-the-hero",
-      "title": "Update site copy to match brand and hero CTA requirements: set backend site info tagline to \"Your Trusted Partner for Unforgettable Travel Experiences\" and update the Home hero to include the CTA text \"Explore the World With Archiv Agency\" (as the primary call-to-action messaging in the hero).",
+      "id": "feature-ensure-the-frontend-canister-deployment-uses-the-vite-build-output-and-that-dfx-build-install-steps-work-for-the-frontend-canister-including-any-needed-build-steps-to-run-npm-run-build-before-packaging-assets",
+      "title": "Ensure the frontend canister deployment uses the Vite build output and that DFX build/install steps work for the frontend canister (including any needed build steps to run `npm run build` before packaging assets).",
       "reqIds": [
         "REQ-3"
       ],
       "version": 1
     },
     {
-      "id": "feature-ensure-every-page-and-major-section-uses-unique-high-quality-travel-imagery-with-no-repeated-images-across-the-site-including-cards-grids-use-real-time-stock-style-images-e-g-unsplash-pexels-like-urls-covering-beaches-mountains-cities-adventure-tours-honeymoon-destinations-and-vehicles-transport",
-      "title": "Ensure every page and major section uses unique, high-quality travel imagery with no repeated images across the site (including cards/grids). Use real-time stock-style images (e.g., Unsplash/Pexels-like URLs) covering: beaches, mountains, cities, adventure tours, honeymoon destinations, and vehicles/transport.",
+      "id": "feature-update-frontend-deployment-md-to-be-complete-it-currently-ends-mid-section-and-provide-an-end-to-end-copy-paste-deployment-flow-that-matches-the-repo-s-actual-files-including-the-new-dfx-json-and-frontend-package-json-for-both-local-testing-and-ic-mainnet-deployment",
+      "title": "Update `frontend/DEPLOYMENT.md` to be complete (it currently ends mid-section) and provide an end-to-end, copy/paste deployment flow that matches the repo’s actual files (including the new `dfx.json` and `frontend/package.json`) for both local testing and IC mainnet deployment.",
       "reqIds": [
         "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-apply-a-consistent-premium-luxury-visual-system-across-all-pages-typography-spacing-card-styles-and-subtle-animations-matching-a-high-end-travel-brand-aesthetic-include-smooth-section-transitions-hover-states-and-keep-all-sections-non-empty",
-      "title": "Apply a consistent premium/luxury visual system across all pages (typography, spacing, card styles, and subtle animations) matching a high-end travel brand aesthetic; include smooth section transitions/hover states and keep all sections non-empty.",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-the-theme-color-feature-so-that-changing-the-theme-color-updates-the-full-brand-system-site-wide-navbar-accents-buttons-icons-badges-tags-links-and-hover-effects-and-heading-highlights-remove-replace-page-specific-hardcoded-color-tokens-e-g-custom-romantic-color-usage-so-the-theme-preset-drives-the-look-consistently-across-all-pages",
-      "title": "Implement the theme color feature so that changing the theme color updates the full brand system site-wide: navbar accents, buttons, icons, badges/tags, links and hover effects, and heading highlights. Remove/replace page-specific hardcoded color tokens (e.g., custom 'romantic' color usage) so the theme preset drives the look consistently across all pages.",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-home-page-implement-required-sections-with-premium-presentation-hero-with-required-tagline-cta-featured-destinations-section-multiple-destination-cards-with-unique-images-and-an-offers-banner-section-unique-imagery-and-promotional-copy",
-      "title": "Home page: implement required sections with premium presentation—hero (with required tagline + CTA), featured destinations section (multiple destination cards with unique images), and an offers banner section (unique imagery and promotional copy).",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-testimonials-slider-carousel-component-and-surface-it-on-the-site-at-minimum-on-the-home-page-with-multiple-testimonials-and-smooth-transitions-ensure-it-is-fully-responsive",
-      "title": "Add a testimonials slider/carousel component and surface it on the site (at minimum on the Home page), with multiple testimonials and smooth transitions; ensure it is fully responsive.",
-      "reqIds": [
-        "REQ-8"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-booking-page-keep-a-simple-booking-form-and-add-a-whatsapp-contact-button-that-opens-whatsapp-with-a-prefilled-message-including-the-selected-package-when-present-show-a-clear-confirmation-message-after-submission",
-      "title": "Booking page: keep a simple booking form and add a WhatsApp contact button that opens WhatsApp with a prefilled message including the selected package (when present); show a clear confirmation message after submission.",
-      "reqIds": [
-        "REQ-9"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-contact-section-that-includes-a-contact-form-and-an-embedded-google-map-iframe-embed-and-ensure-it-is-reachable-from-the-site-e-g-on-home-and-or-in-the-footer",
-      "title": "Add a contact section that includes a contact form and an embedded Google Map (iframe embed) and ensure it is reachable from the site (e.g., on Home and/or in the footer).",
-      "reqIds": [
-        "REQ-10"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-smooth-scrolling-behavior-for-in-page-navigation-ctas-and-ensure-mobile-responsiveness-across-all-pages-navbar-grids-cards-forms",
-      "title": "Implement smooth scrolling behavior for in-page navigation/CTAs and ensure mobile responsiveness across all pages (navbar, grids, cards, forms).",
-      "reqIds": [
-        "REQ-11"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-seo-and-performance-hygiene-update-the-html-title-and-add-essential-meta-tags-description-og-title-og-description-for-archiv-agency-ensure-images-use-appropriate-sizing-loading-attributes-where-applicable-to-keep-pages-fast",
-      "title": "SEO and performance hygiene: update the HTML title and add essential meta tags (description, og:title/og:description) for Archiv Agency; ensure images use appropriate sizing/loading attributes where applicable to keep pages fast.",
-      "reqIds": [
-        "REQ-12"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-footer-ensure-a-professional-footer-includes-social-media-links-e-g-placeholders-to-instagram-facebook-youtube-linkedin-and-that-links-do-not-break-navigation-or-cause-errors",
-      "title": "Footer: ensure a professional footer includes social media links (e.g., placeholders to Instagram/Facebook/YouTube/LinkedIn) and that links do not break navigation or cause errors.",
-      "reqIds": [
-        "REQ-13"
       ],
       "version": 1
     }
   ],
   "new_feature_requests": [
     {
-      "id": "AR-1",
-      "summary": "Create full site structure with required pages and working top navigation (Home, About, Tour Guide, Services, Tour Packages, Vehicles, Honeymoon Offers, Booking) with no broken routes/\"Not Found\" errors",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
       "id": "AR-2",
-      "summary": "Design premium, modern UI/UX (luxury travel brand style) with smooth animations and hero CTA: \"Explore the World With Archiv Agency\" plus homepage tagline",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Implement unique high-quality stock images per section/page (no repeats) covering beaches, mountains, cities, adventure, honeymoon, vehicles/transport",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Add global theme color selector that updates navbar, buttons, icons, tags, links/hover effects, and heading highlights consistently across the entire site",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Home page content: hero section, featured destinations with unique images, and offers banner",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-6",
-      "summary": "About page content: company story, trust/experience, and \"Why choose us\" section",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-7",
-      "summary": "Tour Guide page with guide profiles and unique photos",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-8",
-      "summary": "Services page listing Flight Booking, Hotel Booking, Tour Planning, Visa Assistance, and 24/7 Support",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-9",
-      "summary": "Tour Packages page with domestic & international packages and pricing cards with distinct images",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-10",
-      "summary": "Vehicles page with cars/vans/luxury buses cards and photos",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-11",
-      "summary": "Honeymoon Offers page with romantic destinations (unique visuals) and special discount section",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-12",
-      "summary": "Booking page with simple booking form, WhatsApp contact button, and confirmation message",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-13",
-      "summary": "Add testimonials slider, smooth scrolling, mobile responsiveness, professional footer with social links, contact form + Google map, and basic SEO/fast-loading practices",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-14",
-      "summary": "Ensure the Home page loads as the default first page and that every top-nav route renders without any 'Not Found' or blank-state errors: Home (/), About (/about), Tour Guide (/tour-guide), Services (/services), Tour Packages (/tour-packages), Vehicles (/vehicles), Honeymoon Offers (/honeymoon-offers), Booking (/booking).",
+      "summary": "Add a complete `frontend/package.json` with standard Vite + React scripts and dependencies required by the existing codebase (React, Vite, Tailwind, TanStack Router, TanStack React Query, next-themes, etc.) so `npm install` and `npm run build` succeed in `frontend/`.",
       "reqIds": [
-        "REQ-1"
+        "REQ-2"
       ],
       "status": "pending"
     }
   ],
-  "gameProjectType": "none",
-  "projectName": "Archiv Agency",
+  "projectName": "Fix deployment failure and enable end-to-end dfx deployment (backend + frontend)",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

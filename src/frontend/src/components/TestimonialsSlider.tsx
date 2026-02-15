@@ -76,10 +76,10 @@ export default function TestimonialsSlider() {
     <div className="w-full">
       <Card className="border-border/50 shadow-lg">
         <CardContent className="p-8 md:p-12">
-          <div className="relative">
+          <div className="relative pt-8">
             <Quote className="absolute -top-2 -left-2 h-12 w-12 text-primary/20" />
             
-            <div className="mb-6 flex items-center gap-1">
+            <div className="mb-6 mt-2 flex items-center gap-1">
               {Array.from({ length: currentTestimonial.rating }).map((_, i) => (
                 <Star key={i} className="h-5 w-5 fill-primary text-primary" />
               ))}

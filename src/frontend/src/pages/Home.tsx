@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { Plane, MapPin, Users, Calendar, Car, Mail, ArrowRight, Star, Heart, Shield, Globe } from 'lucide-react';
+import { Plane, MapPin, Users, Calendar, Car, Mail, ArrowRight, Star, Heart, Shield, Globe, Phone, Clock } from 'lucide-react';
 import { useSiteInfo } from '../hooks/useSiteInfo';
 import TestimonialsSlider from '../components/TestimonialsSlider';
 
@@ -407,7 +407,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Google Map */}
+            {/* Google Map with Office Details */}
             <Card className="border-border/50">
               <CardHeader>
                 <CardTitle>Visit Our Office</CardTitle>
@@ -415,39 +415,59 @@ export default function Home() {
                   Find us at our location or reach out through any channel
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="aspect-video w-full overflow-hidden rounded-lg">
+              <CardContent className="space-y-6">
+                {/* Google Maps Embed */}
+                <div className="h-64 w-full overflow-hidden rounded-lg">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9476519598093!2d-73.99185368459395!3d40.74844097932847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1644262070010!5m2!1sen!2sus"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2412648718453!2d-73.98823492346069!3d40.74844097138558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Archiv Agency Location"
+                    title="Office Location Map"
                   />
                 </div>
-                <div className="space-y-3 text-sm">
-                  <div>
-                    <p className="font-semibold text-foreground">Address</p>
-                    <p className="text-muted-foreground">123 Travel Street, Suite 456<br />New York, NY 10001</p>
+
+                {/* Office Details */}
+                <div className="space-y-4">
+                  {/* Address */}
+                  <div className="flex items-start gap-3">
+                    <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <div>
+                      <h4 className="font-semibold text-foreground">Address</h4>
+                      <p className="text-sm text-muted-foreground">123 Travel Street, Suite 456</p>
+                      <p className="text-sm text-muted-foreground">New York, NY 10001</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Phone</p>
-                    <a href="tel:+15551234567" className="text-primary hover:underline">
-                      +1 (555) 123-4567
-                    </a>
+
+                  {/* Phone */}
+                  <div className="flex items-start gap-3">
+                    <Phone className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <div>
+                      <h4 className="font-semibold text-foreground">Phone</h4>
+                      <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Email</p>
-                    <a href="mailto:info@archivagency.com" className="text-primary hover:underline">
-                      info@archivagency.com
-                    </a>
+
+                  {/* Email */}
+                  <div className="flex items-start gap-3">
+                    <Mail className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <div>
+                      <h4 className="font-semibold text-foreground">Email</h4>
+                      <p className="text-sm text-muted-foreground">info@archivagency.com</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Hours</p>
-                    <p className="text-muted-foreground">Monday - Friday: 9:00 AM - 6:00 PM<br />Saturday: 10:00 AM - 4:00 PM</p>
+
+                  {/* Hours */}
+                  <div className="flex items-start gap-3">
+                    <Clock className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <div>
+                      <h4 className="font-semibold text-foreground">Hours</h4>
+                      <p className="text-sm text-muted-foreground">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                      <p className="text-sm text-muted-foreground">Saturday: 10:00 AM - 4:00 PM</p>
+                    </div>
                   </div>
                 </div>
               </CardContent>

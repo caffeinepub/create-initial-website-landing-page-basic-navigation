@@ -1,326 +1,79 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Archiv Agency premium travel website frontend routing, branding, imagery, and required features",
+  "title": "Fix frontend build/deploy wiring for end-to-end DFX deployment",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Ensure Home is the default route and all required top-nav routes render successfully without missing/blank states.",
+      "summary": "Align frontend build artifacts and documentation with a root-level DFX project that serves the Vite build from frontend/dist",
       "acceptanceCriteria": [
-        "Launching the app opens the Home page (route '/') successfully.",
-        "Clicking each navbar item navigates to its corresponding page and renders content without errors.",
-        "There is no route in the navbar that leads to a missing component, empty page, or console error."
+        "A new `dfx.json` exists at the repo root.",
+        "`dfx start --clean` followed by `dfx deploy` completes successfully on local replica.",
+        "`dfx canister call backend getSiteInfo` returns the expected fields (name, tagline, heroCta).",
+        "After local deploy, visiting the local frontend canister URL loads the React app and the homepage displays the backend-provided site info (e.g., \"Archiv Agency\" and tagline)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/vite.config.ts",
           "operation": "modify",
-          "description": "Verify all required routes are registered (/, /about, /tour-guide, /services, /tour-packages, /vehicles, /honeymoon-offers, /booking) and ensure the default index route renders Home reliably with the current TanStack Router setup."
+          "description": "Confirm/standardize that the Vite production build output directory remains `dist` (so the asset canister can serve `frontend/dist` as required), and ensure build settings are compatible with static canister hosting. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/SiteLayout.tsx",
+          "path": "frontend/DEPLOYMENT.md",
           "operation": "modify",
-          "description": "Ensure routed content area always renders (no blank states) and that layout wrappers do not block route rendering on initial load."
+          "description": "Update documentation to explicitly reference the repo-root `dfx.json` configuration expectation (backend canister + frontend asset canister serving `frontend/dist`) and the verification step that the deployed homepage reads site info from the backend. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Implement the exact navbar menu labels and order consistently on desktop and mobile.",
+      "summary": "Add a complete frontend/package.json so npm install and npm run build succeed with the existing React/Vite/Tailwind/TanStack/next-themes code",
       "acceptanceCriteria": [
-        "Navbar displays exactly the 8 specified items in the specified order on desktop.",
-        "Mobile menu displays the same 8 items in the same order.",
-        "All 8 items link to the correct routes."
+        "`frontend/package.json` exists.",
+        "From `frontend/`, `npm install` completes without errors.",
+        "From `frontend/`, `npm run build` produces a production build in `frontend/dist` (matching `vite.config.ts` outDir)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/SiteNavbar.tsx",
-          "operation": "modify",
-          "description": "Confirm navLinks contains exactly: Home, About, Tour Guide, Services, Tour Packages, Vehicles, Honeymoon Offers, Booking in that order, and that both desktop and mobile menus render from the same source list."
+          "path": "frontend/package.json",
+          "operation": "create",
+          "description": "Create a full `frontend/package.json` with standard Vite + React scripts (dev/build/preview) and all dependencies required by the existing codebase (React, Vite, Tailwind, TanStack Router, TanStack React Query, next-themes, and ICP SDK packages referenced by the frontend). Use the selected `build-template-react` component as the baseline for scripts/dependencies and ensure compatibility with the selected `core-infrastructure` template. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
       "id": "REQ-3",
-      "summary": "Update brand copy usage on the frontend: show the required Home hero CTA text and ensure brand name displays as Archiv Agency.",
+      "summary": "Ensure the frontend canister build/install flow runs Vite build and packages the built frontend/dist assets for DFX deployment",
       "acceptanceCriteria": [
-        "backend/main.mo getSiteInfo().tagline returns exactly \"Your Trusted Partner for Unforgettable Travel Experiences\".",
-        "Home hero prominently displays \"Explore the World With Archiv Agency\".",
-        "User-facing brand name appears as \"Archiv Agency\" in the navbar/branding."
+        "`dfx deploy frontend` (local) results in the frontend canister serving the built assets (HTML/CSS/JS load successfully).",
+        "No missing-asset errors occur in the browser console when loading the deployed frontend locally."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/Home.tsx",
+          "path": "frontend/package.json",
           "operation": "modify",
-          "description": "Update the hero primary call-to-action messaging to prominently display the exact text \"Explore the World With Archiv Agency\" (separate from button labels if needed) while continuing to render the siteInfo tagline and name."
+          "description": "Add/confirm a dedicated build script suitable for DFX-driven asset packaging (e.g., a script that reliably produces `frontend/dist` before canister install). Ensure scripts match the repo’s Vite config and are appropriate to be called from the DFX build step. Verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/SiteNavbar.tsx",
+          "path": "frontend/DEPLOYMENT.md",
           "operation": "modify",
-          "description": "Ensure the visible brand label in the navbar/branding reads exactly \"Archiv Agency\" (and remains consistent with siteInfo.name usage elsewhere)."
-        },
-        {
-          "path": "frontend/src/components/SiteFooter.tsx",
-          "operation": "modify",
-          "description": "Align footer brand/supporting copy to use the siteInfo tagline string (or match the required tagline verbatim) so user-facing messaging is consistent across the site."
+          "description": "Document the frontend build step ordering required for DFX (generate bindings if needed, run `npm run build` to create `frontend/dist`, then deploy/install the frontend asset canister) and include a local verification checklist to confirm assets load without console errors. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
       "id": "REQ-4",
-      "summary": "Use unique, high-quality travel imagery across every page/section and across all card/grid items without repeating images.",
+      "summary": "Complete frontend/DEPLOYMENT.md with accurate, copy/paste end-to-end deployment steps for local replica and IC mainnet",
       "acceptanceCriteria": [
-        "No two sections/cards across the entire site reuse the same image URL/file.",
-        "Home includes distinct images for the hero, featured destinations, and offers banner areas.",
-        "Tour Guide profiles each have distinct photos.",
-        "Tour Packages cards each have distinct images.",
-        "Vehicles cards each have distinct images.",
-        "Honeymoon page uses distinct romantic-destination imagery that is not reused elsewhere."
+        "`frontend/DEPLOYMENT.md` includes complete steps for: local replica deploy + verification, and IC mainnet deploy + verification.",
+        "All commands in the doc reference existing files/paths and match the final build/deploy process (e.g., building Vite to `frontend/dist` and deploying the asset canister).",
+        "User-facing documentation text is in English."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/Home.tsx",
+          "path": "frontend/DEPLOYMENT.md",
           "operation": "modify",
-          "description": "Add/adjust Home sections to ensure distinct imagery per section, including adding a featured-destinations card grid and an offers banner with its own unique image; ensure none of the Home images are reused by other pages/cards."
-        },
-        {
-          "path": "frontend/src/pages/TourGuide.tsx",
-          "operation": "modify",
-          "description": "Add distinct guide profile photos (unique URLs per guide card) and ensure the guide page hero/section imagery does not repeat images used elsewhere."
-        },
-        {
-          "path": "frontend/src/pages/Vehicles.tsx",
-          "operation": "modify",
-          "description": "Add unique vehicle images (one per vehicle card) using stock-style URLs and ensure no vehicle image is reused on other pages."
-        },
-        {
-          "path": "frontend/src/pages/Services.tsx",
-          "operation": "modify",
-          "description": "Ensure Services page includes its own distinct hero/section imagery (stock-style URL or existing generated image not used elsewhere) and avoid reusing imagery across other pages."
-        },
-        {
-          "path": "frontend/src/pages/HoneymoonOffers.tsx",
-          "operation": "modify",
-          "description": "Verify every honeymoon offer card image is unique and not reused on Tour Packages/Home; replace any repeated/shared assets with distinct stock-style URLs if needed."
-        },
-        {
-          "path": "frontend/src/pages/TourPackages.tsx",
-          "operation": "modify",
-          "description": "Ensure each tour package card image is unique and not reused across Home or Honeymoon; replace any collisions with distinct stock-style URLs if needed."
-        }
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "summary": "Apply a consistent premium/luxury visual system across all pages with cohesive spacing, card styles, and subtle animations; keep all sections non-empty.",
-      "acceptanceCriteria": [
-        "All 8 pages have complete, non-placeholder content and cohesive layout.",
-        "Buttons/cards/sections have consistent spacing and visual hierarchy across pages.",
-        "Animations are subtle (e.g., hover elevation, fade/slide-in) and do not break layout on mobile."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Refine global typography/spacing defaults for a premium feel (e.g., consistent section padding, improved headings, smooth hover/transition primitives) without introducing new global stylesheet files."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Ensure Tailwind theme tokens (fonts/animations) support a cohesive luxury system used across pages (e.g., subtle transitions, consistent container sizing)."
-        },
-        {
-          "path": "frontend/src/pages/About.tsx",
-          "operation": "modify",
-          "description": "Audit and polish About page section density and card/spacing patterns so it matches the premium layout system and remains non-empty."
-        },
-        {
-          "path": "frontend/src/pages/Services.tsx",
-          "operation": "modify",
-          "description": "Audit and polish Services page layout (grid/card spacing, hover states, section structure) to match the premium system; ensure all sections render real content (no placeholders). Use shadcn-ui Card/Button/etc. to standardize presentation. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/pages/Booking.tsx",
-          "operation": "modify",
-          "description": "Polish Booking page layout hierarchy (form, contact panel, imagery sizing) and align interactions with the premium system; ensure no layout issues on mobile. Use shadcn-ui form primitives already in use. Verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "summary": "Make the theme color preset drive the full brand system site-wide and remove page-specific hardcoded color palettes.",
-      "acceptanceCriteria": [
-        "Switching theme presets changes the visual color of primary buttons, badges, icon accents, link hover states, and highlighted headings across every page.",
-        "No page uses a standalone color system that ignores the selected theme preset (e.g., no isolated page-only palette that remains unchanged).",
-        "Theme color selection persists across reload (localStorage behavior remains functional)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/HoneymoonOffers.tsx",
-          "operation": "modify",
-          "description": "Remove/replace the page-specific \"romantic\" color tokens/classes so Honeymoon uses the shared theme system (primary/accent tokens) for badges, icons, backgrounds, borders, and buttons."
-        },
-        {
-          "path": "frontend/src/components/SiteNavbar.tsx",
-          "operation": "modify",
-          "description": "Apply theme-driven accent styling for active/hover nav items (e.g., hover/active using primary) so navbar branding and interactions visibly respond to the selected ThemeColorProvider preset."
-        },
-        {
-          "path": "frontend/src/components/SiteFooter.tsx",
-          "operation": "modify",
-          "description": "Ensure footer links/icons use theme-driven hover/active colors (primary) and do not introduce any hardcoded page-specific colors."
-        },
-        {
-          "path": "frontend/src/hooks/useThemeColor.ts",
-          "operation": "modify",
-          "description": "Verify theme preset application covers core brand tokens used by buttons/links/badges/icons/headings site-wide and that localStorage persistence remains functional."
-        },
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Ensure the global CSS variable tokens used by Tailwind (primary/accent/ring/etc.) are applied consistently, and remove any unused/special-case palette variables that cause pages to diverge from the selected theme preset."
-        }
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "summary": "Home page: add required premium sections—hero (tagline + required CTA), featured destinations, and an offers banner—each with unique imagery.",
-      "acceptanceCriteria": [
-        "Home includes a featured destinations section with multiple cards and unique images.",
-        "Home includes a distinct offers banner section with its own unique image.",
-        "Hero contains the required tagline and the CTA text is clearly visible."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/Home.tsx",
-          "operation": "modify",
-          "description": "Implement featured destinations card grid (multiple cards) with unique images and premium card styling, and add a dedicated offers banner section with unique imagery and promotional copy. Use shadcn-ui Card/Button for consistent styling. Verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "summary": "Add a responsive testimonials slider/carousel and surface it on the Home page with smooth transitions.",
-      "acceptanceCriteria": [
-        "A testimonials slider is visible and rotates between at least 3 testimonials.",
-        "User can navigate testimonials (e.g., next/prev or dots) on desktop and mobile.",
-        "Slider does not cause layout shift or overflow on small screens."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/TestimonialsSlider.tsx",
-          "operation": "create",
-          "description": "Create a responsive testimonials slider component with smooth transitions, multiple testimonials, and user navigation controls. Use shadcn-ui Button/Card where appropriate for controls and layout consistency. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/pages/Home.tsx",
-          "operation": "modify",
-          "description": "Render the TestimonialsSlider on the Home page (at minimum), ensuring it fits the premium layout system and remains responsive without overflow. Verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "summary": "Booking page: keep the simple form, add a WhatsApp contact button with a prefilled message including the selected package, and show a clear confirmation after submission.",
-      "acceptanceCriteria": [
-        "Booking page contains a WhatsApp button that opens a wa.me (or WhatsApp) link in a new tab.",
-        "The WhatsApp prefilled message includes the package name when the booking page is opened with a package selected.",
-        "Submitting the booking form shows a confirmation message and does not throw errors."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/Booking.tsx",
-          "operation": "modify",
-          "description": "Update WhatsApp link generation to include a URL-encoded prefilled message that references the selected package (from query params when present), and ensure it opens in a new tab; keep existing confirmation UI after form submission. Use shadcn-ui Button for a clear WhatsApp CTA. Verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
-      "id": "REQ-10",
-      "summary": "Add a contact section with a contact form and a responsive embedded Google Map (iframe) and ensure it is reachable from the site.",
-      "acceptanceCriteria": [
-        "A contact form is present with basic fields and a submit interaction (client-side).",
-        "A Google Map embed is displayed via iframe and is responsive (no horizontal overflow).",
-        "Contact section is accessible via scrolling/navigation without broken anchors."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/Home.tsx",
-          "operation": "modify",
-          "description": "Extend the existing Home contact section to include a responsive Google Map iframe embed alongside/below the contact form; ensure the section remains reachable via an in-page CTA and does not overflow on mobile. Use shadcn-ui Card/layout primitives for consistent presentation. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/SiteFooter.tsx",
-          "operation": "modify",
-          "description": "Add a footer 'Contact' internal link/CTA that navigates users to the Home contact section (without breaking SPA routing) so the contact area is reliably reachable from anywhere."
-        }
-      ]
-    },
-    {
-      "id": "REQ-11",
-      "summary": "Implement smooth scrolling for in-page CTAs and ensure mobile responsiveness across all pages (navbar, grids, cards, forms).",
-      "acceptanceCriteria": [
-        "In-page CTA links that scroll to sections do so smoothly.",
-        "All pages render correctly on mobile widths without overlapping elements or clipped content.",
-        "Mobile menu opens/closes reliably and routes correctly."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Enable smooth scrolling behavior globally (e.g., scroll-behavior) and add any safe responsive base tweaks to prevent horizontal overflow across sections."
-        },
-        {
-          "path": "frontend/src/components/SiteNavbar.tsx",
-          "operation": "modify",
-          "description": "Verify the mobile Sheet menu opens/closes reliably, routes correctly, and does not overflow; ensure tap targets and spacing are mobile-friendly. Use existing shadcn-ui Sheet/Button components as currently composed. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/pages/Home.tsx",
-          "operation": "modify",
-          "description": "Ensure in-page CTAs that scroll to the contact section do so smoothly and remain functional on mobile; audit responsive grid behavior for all Home sections."
-        }
-      ]
-    },
-    {
-      "id": "REQ-12",
-      "summary": "Improve SEO/performance hygiene: update HTML title and essential meta tags; ensure images use reasonable sizing/loading attributes.",
-      "acceptanceCriteria": [
-        "frontend/index.html title references \"Archiv Agency\" (not the template title).",
-        "Meta description is present and relevant to Archiv Agency travel services.",
-        "Pages avoid obviously oversized images for small containers and do not spam the console with errors/warnings."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/index.html",
-          "operation": "modify",
-          "description": "Set the document title to reference \"Archiv Agency\" and add essential meta tags (description, og:title, og:description) appropriate for a premium travel agency site."
-        },
-        {
-          "path": "frontend/src/pages/Home.tsx",
-          "operation": "modify",
-          "description": "Audit key above-the-fold images for performance hygiene by adding appropriate loading/decoding attributes where applicable and ensuring images are not rendered at obviously excessive sizes for their containers."
-        },
-        {
-          "path": "frontend/src/pages/TourPackages.tsx",
-          "operation": "modify",
-          "description": "Audit package grid images to ensure consistent container sizing and add appropriate loading attributes to reduce layout shift and keep pages fast."
-        }
-      ]
-    },
-    {
-      "id": "REQ-13",
-      "summary": "Add a professional footer with social media links/icons that open externally and do not break navigation.",
-      "acceptanceCriteria": [
-        "Footer displays a social links area with at least 3 social icons/links.",
-        "Social links open externally (new tab) and do not break SPA routing.",
-        "All internal footer links that are shown navigate to valid routes."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/SiteFooter.tsx",
-          "operation": "modify",
-          "description": "Add a social links section (e.g., Instagram/Facebook/YouTube/LinkedIn placeholders) using external anchors that open in a new tab with proper rel attributes; verify existing internal links only point to valid routes."
+          "description": "Finish the currently truncated section and provide a complete end-to-end guide in English for (1) local replica: start, deploy, verify backend site info + frontend loads; and (2) IC mainnet: deploy, verify URL, check homepage renders backend-provided site info. Ensure all commands/paths match the final repo structure (including `frontend/package.json`, `frontend/dist`, and the repo-root `dfx.json`). Verify the component's usage instructions before implementing."
         }
       ]
     }

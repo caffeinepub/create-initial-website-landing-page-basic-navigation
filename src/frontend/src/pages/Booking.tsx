@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle2, CreditCard, Smartphone, Building2, QrCode, Phone, Mail, MessageCircle } from 'lucide-react';
+import { CheckCircle2, QrCode, Phone, Mail, MessageCircle } from 'lucide-react';
 
 export default function Booking() {
   const search = useSearch({ strict: false });
@@ -193,48 +193,18 @@ export default function Booking() {
 
           {/* Payment & Contact Information */}
           <div className="space-y-6">
-            {/* Payment Methods */}
+            {/* Payment Methods - QR Code Only */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <CreditCard className="h-5 w-5" />
-                  Payment Methods
+                  <QrCode className="h-5 w-5" />
+                  Payment Method
                 </CardTitle>
                 <CardDescription>
-                  We accept the following payment options
+                  Scan the QR code to make payment
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Smartphone className="h-5 w-5 text-primary mt-0.5" />
-                  <div>
-                    <p className="font-medium text-foreground">UPI Payment</p>
-                    <p className="text-sm text-muted-foreground">
-                      Pay instantly using any UPI app
-                    </p>
-                  </div>
-                </div>
-                <Separator />
-                <div className="flex items-start gap-3">
-                  <Building2 className="h-5 w-5 text-primary mt-0.5" />
-                  <div>
-                    <p className="font-medium text-foreground">Net Banking</p>
-                    <p className="text-sm text-muted-foreground">
-                      Direct bank transfer available
-                    </p>
-                  </div>
-                </div>
-                <Separator />
-                <div className="flex items-start gap-3">
-                  <CreditCard className="h-5 w-5 text-primary mt-0.5" />
-                  <div>
-                    <p className="font-medium text-foreground">Card Payment</p>
-                    <p className="text-sm text-muted-foreground">
-                      Credit and debit cards accepted
-                    </p>
-                  </div>
-                </div>
-                <Separator />
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <QrCode className="h-5 w-5 text-primary" />

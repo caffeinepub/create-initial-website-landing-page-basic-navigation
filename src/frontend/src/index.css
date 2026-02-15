@@ -74,9 +74,487 @@
   
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Global responsive image and media handling */
+  img,
+  video,
+  iframe,
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Prevent layout shift from images */
+  img {
+    display: block;
+  }
+
+  /* Better word breaking for long text */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES - MOBILE FIRST
+   ============================================ */
+
+/* Container responsive padding */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Touch-friendly tap targets for mobile - SCOPED */
+@media (max-width: 768px) {
+  /* Header navigation and controls */
+  header button,
+  header a,
+  header [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Mobile sheet navigation */
+  [role="dialog"] nav a,
+  [role="dialog"] nav button,
+  [role="dialog"] [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Primary interactive controls */
+  button[type="submit"],
+  input[type="submit"],
+  input[type="button"],
+  .btn,
+  [class*="Button"] {
+    min-height: 44px;
+  }
+
+  /* Improve form input sizing on mobile */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Header/Navbar responsive improvements */
+@media (max-width: 768px) {
+  header .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Logo sizing on mobile */
+  header img[alt="Logo"] {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  /* Brand text sizing */
+  header .font-display {
+    font-size: 1.125rem;
+  }
+}
+
+/* Sheet (mobile menu) improvements */
+@media (max-width: 768px) {
+  [data-radix-scroll-area-viewport] {
+    overscroll-behavior: contain;
+  }
+
+  /* Mobile menu links - better spacing */
+  [role="dialog"] nav a,
+  [role="dialog"] button {
+    padding: 0.75rem 1rem;
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Grid responsive adjustments */
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Force single column on small screens */
+  .md\:grid-cols-2,
+  .md\:grid-cols-3,
+  .md\:grid-cols-4,
+  .lg\:grid-cols-2,
+  .lg\:grid-cols-3,
+  .lg\:grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Typography responsive scaling */
+@media (max-width: 640px) {
+  .text-4xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .text-5xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .text-6xl {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .md\:text-4xl,
+  .md\:text-5xl,
+  .lg\:text-6xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+/* Card responsive improvements */
+@media (max-width: 640px) {
+  [class*="CardHeader"],
+  [class*="CardContent"],
+  [class*="CardFooter"] {
+    padding: 1rem;
+  }
+
+  /* Reduce card gaps on mobile */
+  .gap-8 {
+    gap: 1.25rem;
+  }
+
+  .gap-12 {
+    gap: 1.5rem;
+  }
+}
+
+/* Section padding adjustments for mobile - REFINED */
+@media (max-width: 640px) {
+  /* Base section rhythm */
+  section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Consistent vertical rhythm for utility classes */
+  .py-20 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .py-32 {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .py-16 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .py-24 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Button responsive improvements */
+@media (max-width: 640px) {
+  .flex-wrap {
+    gap: 0.75rem;
+  }
+
+  /* Full width buttons on mobile when appropriate */
+  .w-full {
+    width: 100%;
+  }
+}
+
+/* Image responsive improvements */
+@media (max-width: 640px) {
+  img.rounded-2xl,
+  img.rounded-lg {
+    border-radius: 0.75rem;
+  }
+
+  /* Ensure images don't overflow */
+  img.shadow-2xl,
+  img.shadow-lg {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Table responsive - horizontal scroll */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Dialog/Modal responsive improvements */
+@media (max-width: 640px) {
+  [role="dialog"] {
+    max-width: calc(100vw - 2rem);
+    margin: 1rem;
+  }
+
+  [role="alertdialog"] {
+    max-width: calc(100vw - 2rem);
+    margin: 1rem;
+  }
+}
+
+/* Footer responsive improvements */
+@media (max-width: 768px) {
+  footer .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  footer .md\:grid-cols-4,
+  footer .lg\:grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Testimonials slider responsive */
+@media (max-width: 640px) {
+  [class*="testimonial"] {
+    padding: 1rem;
+  }
+
+  /* Carousel controls positioning */
+  button[class*="carousel"] {
+    position: static;
+    margin-top: 1rem;
+  }
+}
+
+/* Form responsive improvements - FIXED space-y utilities */
+@media (max-width: 640px) {
+  form .grid {
+    grid-template-columns: 1fr;
+  }
+
+  form .md\:grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Correct Tailwind space-y behavior using margin */
+  .space-y-4 > * + * {
+    margin-top: 0.75rem;
+  }
+
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
+
+  .space-y-8 > * + * {
+    margin-top: 1.5rem;
+  }
+
+  .space-y-12 > * + * {
+    margin-top: 2rem;
+  }
+}
+
+/* Stats/Numbers grid responsive */
+@media (max-width: 640px) {
+  .grid-cols-3 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Keep stats in row on mobile if space allows */
+  @media (min-width: 375px) {
+    .grid-cols-3 {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+  }
+}
+
+/* Badge responsive sizing */
+@media (max-width: 640px) {
+  [class*="Badge"] {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* Dropdown menu responsive */
+@media (max-width: 640px) {
+  [role="menu"] {
+    max-width: calc(100vw - 2rem);
+  }
+}
+
+/* Spacing utilities responsive override - REFINED */
+@media (max-width: 640px) {
+  /* Consistent gap reductions */
+  .gap-6 {
+    gap: 1rem;
+  }
+
+  .gap-10 {
+    gap: 1.5rem;
+  }
+}
+
+/* Prevent horizontal overflow from full-width elements */
+@media (max-width: 640px) {
+  .w-screen,
+  .min-w-screen {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+  }
+}
+
+/* Safe area padding for notched devices */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+
+  header {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}
+
+/* Improve touch scrolling on iOS */
+@media (max-width: 768px) {
+  [class*="overflow-auto"],
+  [class*="overflow-scroll"] {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Better focus states for keyboard navigation */
+@media (max-width: 768px) {
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+/* Aspect ratio preservation for embedded content */
+@media (max-width: 640px) {
+  iframe[src*="google.com/maps"],
+  iframe[src*="youtube.com"],
+  iframe[src*="vimeo.com"] {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+}
+
+/* Improve readability on small screens */
+@media (max-width: 640px) {
+  body {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .text-lg {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .text-xl {
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+}
+
+/* Tablet specific adjustments */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Landscape mobile adjustments */
+@media (max-width: 896px) and (orientation: landscape) {
+  section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .py-20 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* High DPI screen optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Print styles */
+@media print {
+  header,
+  footer,
+  nav,
+  button,
+  [role="navigation"] {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  a {
+    text-decoration: underline;
   }
 }

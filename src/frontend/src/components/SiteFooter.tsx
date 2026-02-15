@@ -1,13 +1,8 @@
 import { Link } from '@tanstack/react-router';
-import { Heart } from 'lucide-react';
 import { SiFacebook, SiInstagram, SiX, SiYoutube } from 'react-icons/si';
 import { useSiteInfo } from '../hooks/useSiteInfo';
 
 export default function SiteFooter() {
-  const currentYear = new Date().getFullYear();
-  const appIdentifier = encodeURIComponent(
-    typeof window !== 'undefined' ? window.location.hostname : 'unknown-app'
-  );
   const { siteInfo } = useSiteInfo();
 
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -36,7 +31,7 @@ export default function SiteFooter() {
               <span className="font-display text-lg font-bold text-foreground">{siteInfo.name}</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Your trusted partner for unforgettable travel experiences around the world.
+              {siteInfo.tagline}
             </p>
           </div>
 
@@ -88,7 +83,7 @@ export default function SiteFooter() {
             </nav>
           </div>
 
-          {/* Social & Attribution */}
+          {/* Social */}
           <div className="flex flex-col gap-4">
             <h3 className="font-semibold text-foreground">Connect With Us</h3>
             <div className="flex gap-3">
@@ -128,22 +123,6 @@ export default function SiteFooter() {
               >
                 <SiYoutube className="h-5 w-5 text-muted-foreground hover:text-primary" />
               </a>
-            </div>
-            <div className="mt-4 space-y-2">
-              <p className="text-sm text-muted-foreground">
-                © {currentYear} {siteInfo.name}. All rights reserved.
-              </p>
-              <p className="flex items-center gap-1 text-sm text-muted-foreground">
-                Built with <Heart className="h-4 w-4 fill-primary text-primary" /> using{' '}
-                <a
-                  href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appIdentifier}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-foreground underline-offset-4 hover:text-primary hover:underline transition-colors"
-                >
-                  caffeine.ai
-                </a>
-              </p>
             </div>
           </div>
         </div>
