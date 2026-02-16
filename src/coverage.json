@@ -1,69 +1,52 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-13T07:10:11.523Z",
+  "generatedAt": "2026-02-15T05:05:14.949Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 4,
-    "implemented": 3,
+    "total": 3,
+    "implemented": 0,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Add the missing Internet Computer project configuration so the app can be deployed with DFX: create a root-level `dfx.json` that defines a Motoko `backend` canister (source `backend/main.mo`) and a static asset `frontend` canister that serves the built Vite output from `frontend/dist`.",
-        "status": "implemented",
+        "summary": "Deploy the existing project to the Internet Computer as-is (frontend static assets + backend canister) using the repository’s current files, dependencies, configuration, and folder structure, and do not make any modifications to code, assets, configuration, or project structure as part of completing the deployment.",
+        "status": "missing",
         "plannedFiles": [
-          "frontend/vite.config.ts",
-          "frontend/DEPLOYMENT.md"
+          "frontend/DEPLOYMENT.md",
+          "frontend/README.md"
         ],
-        "matchedFiles": [
-          "frontend/vite.config.ts",
-          "frontend/DEPLOYMENT.md"
-        ]
+        "matchedFiles": []
       },
       {
         "id": "REQ-2",
-        "summary": "Add a complete `frontend/package.json` with standard Vite + React scripts and dependencies required by the existing codebase (React, Vite, Tailwind, TanStack Router, TanStack React Query, next-themes, etc.) so `npm install` and `npm run build` succeed in `frontend/`.",
+        "summary": "After deployment, verify the live site end-to-end: all routes/pages load, all navigation links work, scripts/styles load correctly, and all media/assets render without missing files; verify the browser DevTools Console shows no warnings or errors on initial load and during navigation.",
         "status": "missing",
         "plannedFiles": [
-          "frontend/package.json"
+          "frontend/src/App.tsx",
+          "frontend/src/components/SiteNavbar.tsx",
+          "frontend/src/components/SiteFooter.tsx",
+          "frontend/DEPLOYMENT.md"
         ],
         "matchedFiles": []
       },
       {
         "id": "REQ-3",
-        "summary": "Ensure the frontend canister deployment uses the Vite build output and that DFX build/install steps work for the frontend canister (including any needed build steps to run `npm run build` before packaging assets).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/package.json",
-          "frontend/DEPLOYMENT.md"
-        ],
-        "matchedFiles": [
-          "frontend/DEPLOYMENT.md"
-        ]
-      },
-      {
-        "id": "REQ-4",
-        "summary": "Update `frontend/DEPLOYMENT.md` to be complete (it currently ends mid-section) and provide an end-to-end, copy/paste deployment flow that matches the repo’s actual files (including the new `dfx.json` and `frontend/package.json`) for both local testing and IC mainnet deployment.",
-        "status": "implemented",
+        "summary": "After successful deployment and verification, provide the final live public URL for the hosted website as the only output (no additional text).",
+        "status": "missing",
         "plannedFiles": [
           "frontend/DEPLOYMENT.md"
         ],
-        "matchedFiles": [
-          "frontend/DEPLOYMENT.md"
-        ]
+        "matchedFiles": []
       }
     ]
   },
   "changedFiles": [
     "build-request.json",
     "feature_evidence.json",
-    "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/DEPLOYMENT.md",
-    "frontend/vite.config.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

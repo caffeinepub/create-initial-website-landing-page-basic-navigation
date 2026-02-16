@@ -1,79 +1,73 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Fix frontend build/deploy wiring for end-to-end DFX deployment",
+  "title": "IC mainnet deployment (no-repo-changes) verification plan",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Align frontend build artifacts and documentation with a root-level DFX project that serves the Vite build from frontend/dist",
+      "summary": "Deploy the existing project to the Internet Computer as-is without modifying any repository files.",
       "acceptanceCriteria": [
-        "A new `dfx.json` exists at the repo root.",
-        "`dfx start --clean` followed by `dfx deploy` completes successfully on local replica.",
-        "`dfx canister call backend getSiteInfo` returns the expected fields (name, tagline, heroCta).",
-        "After local deploy, visiting the local frontend canister URL loads the React app and the homepage displays the backend-provided site info (e.g., \"Archiv Agency\" and tagline)."
+        "No files, folders, code, assets, dependencies, configurations, or structure are modified to complete deployment.",
+        "Deployment includes both canisters needed by the project (frontend static asset canister and Motoko backend canister), matching the project’s existing architecture.",
+        "The deployed site is publicly accessible on IC mainnet."
       ],
       "file_operations": [
         {
-          "path": "frontend/vite.config.ts",
-          "operation": "modify",
-          "description": "Confirm/standardize that the Vite production build output directory remains `dist` (so the asset canister can serve `frontend/dist` as required), and ensure build settings are compatible with static canister hosting. Verify the component's usage instructions before implementing."
-        },
-        {
           "path": "frontend/DEPLOYMENT.md",
           "operation": "modify",
-          "description": "Update documentation to explicitly reference the repo-root `dfx.json` configuration expectation (backend canister + frontend asset canister serving `frontend/dist`) and the verification step that the deployed homepage reads site info from the backend. Verify the component's usage instructions before implementing."
+          "description": "No-op (do not change file contents): follow the existing documented deployment steps to deploy the current frontend build artifacts and associated canisters to IC mainnet exactly as provided; do not alter any code/assets/config."
+        },
+        {
+          "path": "frontend/README.md",
+          "operation": "modify",
+          "description": "No-op (do not change file contents): use only the existing install/build commands and prerequisites as documented; do not add or adjust scripts, dependencies, or configuration."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Add a complete frontend/package.json so npm install and npm run build succeed with the existing React/Vite/Tailwind/TanStack/next-themes code",
+      "summary": "Verify the live deployed site end-to-end (routes, navigation, assets, and console cleanliness).",
       "acceptanceCriteria": [
-        "`frontend/package.json` exists.",
-        "From `frontend/`, `npm install` completes without errors.",
-        "From `frontend/`, `npm run build` produces a production build in `frontend/dist` (matching `vite.config.ts` outDir)."
+        "All primary pages (e.g., Home, About, Services, Tour Packages, Honeymoon Offers, Vehicles, Tour Guide, Booking, Privacy) render successfully on the live URL.",
+        "All navbar/footer links and in-app navigation work without broken routes.",
+        "No missing asset/network errors when loading pages and images.",
+        "Browser console shows zero errors and zero warnings during initial load and when navigating between pages."
       ],
       "file_operations": [
         {
-          "path": "frontend/package.json",
-          "operation": "create",
-          "description": "Create a full `frontend/package.json` with standard Vite + React scripts (dev/build/preview) and all dependencies required by the existing codebase (React, Vite, Tailwind, TanStack Router, TanStack React Query, next-themes, and ICP SDK packages referenced by the frontend). Use the selected `build-template-react` component as the baseline for scripts/dependencies and ensure compatibility with the selected `core-infrastructure` template. Verify the component's usage instructions before implementing."
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "No-op (do not change file contents): use the existing router configuration as the source of truth for which routes must be validated on the live deployment."
+        },
+        {
+          "path": "frontend/src/components/SiteNavbar.tsx",
+          "operation": "modify",
+          "description": "No-op (do not change file contents): use the existing navbar link list to drive live navigation verification across all primary pages."
+        },
+        {
+          "path": "frontend/src/components/SiteFooter.tsx",
+          "operation": "modify",
+          "description": "No-op (do not change file contents): verify footer links (including the Home contact anchor behavior) work correctly on the live deployment without broken navigation."
+        },
+        {
+          "path": "frontend/DEPLOYMENT.md",
+          "operation": "modify",
+          "description": "No-op (do not change file contents): follow the existing verification checklist for live site testing, including checking browser DevTools Console for zero warnings/errors."
         }
       ]
     },
     {
       "id": "REQ-3",
-      "summary": "Ensure the frontend canister build/install flow runs Vite build and packages the built frontend/dist assets for DFX deployment",
+      "summary": "Provide the final live public URL as the only output after successful deployment and verification.",
       "acceptanceCriteria": [
-        "`dfx deploy frontend` (local) results in the frontend canister serving the built assets (HTML/CSS/JS load successfully).",
-        "No missing-asset errors occur in the browser console when loading the deployed frontend locally."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/package.json",
-          "operation": "modify",
-          "description": "Add/confirm a dedicated build script suitable for DFX-driven asset packaging (e.g., a script that reliably produces `frontend/dist` before canister install). Ensure scripts match the repo’s Vite config and are appropriate to be called from the DFX build step. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/DEPLOYMENT.md",
-          "operation": "modify",
-          "description": "Document the frontend build step ordering required for DFX (generate bindings if needed, run `npm run build` to create `frontend/dist`, then deploy/install the frontend asset canister) and include a local verification checklist to confirm assets load without console errors. Verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "summary": "Complete frontend/DEPLOYMENT.md with accurate, copy/paste end-to-end deployment steps for local replica and IC mainnet",
-      "acceptanceCriteria": [
-        "`frontend/DEPLOYMENT.md` includes complete steps for: local replica deploy + verification, and IC mainnet deploy + verification.",
-        "All commands in the doc reference existing files/paths and match the final build/deploy process (e.g., building Vite to `frontend/dist` and deploying the asset canister).",
-        "User-facing documentation text is in English."
+        "A single public URL (e.g., https://<frontend-canister-id>.ic0.app) is produced after deployment.",
+        "The response contains only the URL and no additional explanatory text."
       ],
       "file_operations": [
         {
           "path": "frontend/DEPLOYMENT.md",
           "operation": "modify",
-          "description": "Finish the currently truncated section and provide a complete end-to-end guide in English for (1) local replica: start, deploy, verify backend site info + frontend loads; and (2) IC mainnet: deploy, verify URL, check homepage renders backend-provided site info. Ensure all commands/paths match the final repo structure (including `frontend/package.json`, `frontend/dist`, and the repo-root `dfx.json`). Verify the component's usage instructions before implementing."
+          "description": "No-op (do not change file contents): use the existing instructions for retrieving the deployed frontend canister URL and ensure the final response is exactly one URL string and nothing else."
         }
       ]
     }

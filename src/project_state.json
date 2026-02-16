@@ -1,49 +1,47 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "New project",
-  "architectural_notes": [],
-  "known_issues": [
-    "Deployment is failing (deployment error occurred during build/deploy sequence)."
+  "summary": "Deploy and host the provided website exactly as-is (no modifications), ensure it works without warnings/errors, and provide the final live public URL.",
+  "architectural_notes": [
+    "Deployment must preserve 100% of original project contents and folder hierarchy with no modifications, refactors, renames, or dependency/config changes.",
+    "After deployment, verify all pages/links/scripts/styles/media function correctly and do not expose warnings or errors."
   ],
-  "isFixRequest": true,
-  "existing_features": [
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [],
+  "new_feature_requests": [
     {
-      "id": "feature-add-the-missing-internet-computer-project-configuration-so-the-app-can-be-deployed-with-dfx-create-a-root-level-dfx-json-that-defines-a-motoko-backend-canister-source-backend-main-mo-and-a-static-asset-frontend-canister-that-serves-the-built-vite-output-from-frontend-dist",
-      "title": "Add the missing Internet Computer project configuration so the app can be deployed with DFX: create a root-level `dfx.json` that defines a Motoko `backend` canister (source `backend/main.mo`) and a static asset `frontend` canister that serves the built Vite output from `frontend/dist`.",
+      "id": "AR-1",
+      "summary": "Deploy and host the provided website exactly as-is (no file/code/config changes) and share the final live public URL after verifying pages/assets work with no warnings/errors.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Deploy the existing project to the Internet Computer as-is (frontend static assets + backend canister) using the repository’s current files, dependencies, configuration, and folder structure, and do not make any modifications to code, assets, configuration, or project structure as part of completing the deployment.",
       "reqIds": [
         "REQ-1"
       ],
-      "version": 1
+      "status": "pending"
     },
     {
-      "id": "feature-ensure-the-frontend-canister-deployment-uses-the-vite-build-output-and-that-dfx-build-install-steps-work-for-the-frontend-canister-including-any-needed-build-steps-to-run-npm-run-build-before-packaging-assets",
-      "title": "Ensure the frontend canister deployment uses the Vite build output and that DFX build/install steps work for the frontend canister (including any needed build steps to run `npm run build` before packaging assets).",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-frontend-deployment-md-to-be-complete-it-currently-ends-mid-section-and-provide-an-end-to-end-copy-paste-deployment-flow-that-matches-the-repo-s-actual-files-including-the-new-dfx-json-and-frontend-package-json-for-both-local-testing-and-ic-mainnet-deployment",
-      "title": "Update `frontend/DEPLOYMENT.md` to be complete (it currently ends mid-section) and provide an end-to-end, copy/paste deployment flow that matches the repo’s actual files (including the new `dfx.json` and `frontend/package.json`) for both local testing and IC mainnet deployment.",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    }
-  ],
-  "new_feature_requests": [
-    {
-      "id": "AR-2",
-      "summary": "Add a complete `frontend/package.json` with standard Vite + React scripts and dependencies required by the existing codebase (React, Vite, Tailwind, TanStack Router, TanStack React Query, next-themes, etc.) so `npm install` and `npm run build` succeed in `frontend/`.",
+      "id": "AR-3",
+      "summary": "After deployment, verify the live site end-to-end: all routes/pages load, all navigation links work, scripts/styles load correctly, and all media/assets render without missing files; verify the browser DevTools Console shows no warnings or errors on initial load and during navigation.",
       "reqIds": [
         "REQ-2"
       ],
       "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "After successful deployment and verification, provide the final live public URL for the hosted website as the only output (no additional text).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
     }
   ],
-  "projectName": "Fix deployment failure and enable end-to-end dfx deployment (backend + frontend)",
+  "projectName": "Deploy and host the existing website without modifying any project files",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

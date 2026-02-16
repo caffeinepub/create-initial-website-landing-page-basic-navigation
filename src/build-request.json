@@ -1,92 +1,86 @@
 {
   "kind": "build_request",
-  "title": "Fix deployment failure and enable end-to-end dfx deployment (backend + frontend)",
-  "priority": "high",
+  "title": "Deploy and host the existing website without modifying any project files",
+  "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Add the missing Internet Computer project configuration so the app can be deployed with DFX: create a root-level `dfx.json` that defines a Motoko `backend` canister (source `backend/main.mo`) and a static asset `frontend` canister that serves the built Vite output from `frontend/dist`.",
+      "text": "Deploy the existing project to the Internet Computer as-is (frontend static assets + backend canister) using the repository’s current files, dependencies, configuration, and folder structure, and do not make any modifications to code, assets, configuration, or project structure as part of completing the deployment.",
       "target": "both",
       "source": {
         "messageIds": [
-          "recent-messages-1"
+          "msg-user-1"
         ],
         "quotes": [
-          "complete the deployment"
+          "Please deploy and host my website.\nDo not modify, optimize, refactor, rename, or remove any files, folders, code, assets, dependencies, configurations, or structure.\nThe website must be hosted exactly as provided."
         ]
       },
       "acceptanceCriteria": [
-        "A new `dfx.json` exists at the repo root.",
-        "`dfx start --clean` followed by `dfx deploy` completes successfully on local replica.",
-        "`dfx canister call backend getSiteInfo` returns the expected fields (name, tagline, heroCta).",
-        "After local deploy, visiting the local frontend canister URL loads the React app and the homepage displays the backend-provided site info (e.g., \"Archiv Agency\" and tagline)."
+        "No files, folders, code, assets, dependencies, configurations, or structure are modified to complete deployment.",
+        "Deployment includes both canisters needed by the project (frontend static asset canister and Motoko backend canister), matching the project’s existing architecture.",
+        "The deployed site is publicly accessible on IC mainnet."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Add a complete `frontend/package.json` with standard Vite + React scripts and dependencies required by the existing codebase (React, Vite, Tailwind, TanStack Router, TanStack React Query, next-themes, etc.) so `npm install` and `npm run build` succeed in `frontend/`.",
+      "text": "After deployment, verify the live site end-to-end: all routes/pages load, all navigation links work, scripts/styles load correctly, and all media/assets render without missing files; verify the browser DevTools Console shows no warnings or errors on initial load and during navigation.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages-1"
+          "msg-user-1"
         ],
         "quotes": [
-          "complete the deployment"
+          "Ensure all pages, links, scripts, styles, and media work correctly\nDo not display any warnings or errors"
         ]
       },
       "acceptanceCriteria": [
-        "`frontend/package.json` exists.",
-        "From `frontend/`, `npm install` completes without errors.",
-        "From `frontend/`, `npm run build` produces a production build in `frontend/dist` (matching `vite.config.ts` outDir)."
+        "All primary pages (e.g., Home, About, Services, Tour Packages, Honeymoon Offers, Vehicles, Tour Guide, Booking, Privacy) render successfully on the live URL.",
+        "All navbar/footer links and in-app navigation work without broken routes.",
+        "No missing asset/network errors when loading pages and images.",
+        "Browser console shows zero errors and zero warnings during initial load and when navigating between pages."
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Ensure the frontend canister deployment uses the Vite build output and that DFX build/install steps work for the frontend canister (including any needed build steps to run `npm run build` before packaging assets).",
-      "target": "both",
+      "text": "After successful deployment and verification, provide the final live public URL for the hosted website as the only output (no additional text).",
+      "target": "unknown",
       "source": {
         "messageIds": [
-          "recent-messages-1"
+          "msg-user-1"
         ],
         "quotes": [
-          "complete the deployment"
+          "After successful deployment, generate and share the live public URL.\nProvide only the final hosted link after deployment"
         ]
       },
       "acceptanceCriteria": [
-        "`dfx deploy frontend` (local) results in the frontend canister serving the built assets (HTML/CSS/JS load successfully).",
-        "No missing-asset errors occur in the browser console when loading the deployed frontend locally."
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Update `frontend/DEPLOYMENT.md` to be complete (it currently ends mid-section) and provide an end-to-end, copy/paste deployment flow that matches the repo’s actual files (including the new `dfx.json` and `frontend/package.json`) for both local testing and IC mainnet deployment.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "recent-messages-1"
-        ],
-        "quotes": [
-          "complete the deployment"
-        ]
-      },
-      "acceptanceCriteria": [
-        "`frontend/DEPLOYMENT.md` includes complete steps for: local replica deploy + verification, and IC mainnet deploy + verification.",
-        "All commands in the doc reference existing files/paths and match the final build/deploy process (e.g., building Vite to `frontend/dist` and deploying the asset canister).",
-        "User-facing documentation text is in English."
+        "A single public URL (e.g., https://<frontend-canister-id>.ic0.app) is produced after deployment.",
+        "The response contains only the URL and no additional explanatory text."
       ]
     }
   ],
   "constraints": [
-    "Backend must remain a single Motoko actor in `backend/main.mo` (no additional backend services).",
-    "Do not edit files under `frontend/src/components/ui` (compose them only).",
-    "Do not modify immutable hook/entrypoint paths listed in SYSTEM_CONTEXT; add new files or adjust non-immutable configuration instead."
+    "Do not modify, optimize, refactor, rename, or remove any files, folders, code, assets, dependencies, configurations, or structure.",
+    "Maintain exact folder hierarchy and file integrity.",
+    "Use English for any user-facing text."
   ],
   "nonGoals": [
-    "Adding new product features or pages unrelated to deployment.",
-    "Integrating third-party hosting providers or external databases."
+    "Adding missing configuration files (e.g., creating/updating root dfx.json) or editing deployment configuration.",
+    "Changing dependencies, adding/removing packages, or introducing build-system changes (e.g., adding/changing frontend/package.json scripts).",
+    "Refactoring frontend/backend code for performance or cleanliness.",
+    "Feature development unrelated to deployment/hosting."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }
